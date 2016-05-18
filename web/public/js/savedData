@@ -1,0 +1,61 @@
+function getAddressByPhone(cb) {
+  var phoneToAddress = PhoneToAddress.deployed();
+  var phone = document.getElementById("POPInputPhone").value;
+
+  phoneToAddress.getAddressByPhone.call(phone, {from: account}).then(function(value) {
+    console.log(value);
+    cb(null, value);
+  }).catch(function(e) {
+    console.log(e);
+    console.log("Error getting phone; see log.");
+    cb(e, null);
+  });
+};
+
+function getPhoneByAddress(cb) {
+  var phoneToAddress = PhoneToAddress.deployed();
+  var addr = document.getElementById("POPInputWallet").value;
+
+  phoneToAddress.getPhoneByAddress.call(addr, {from: account}).then(function(value) {
+    console.log(value);
+    cb(null, value);
+  }).catch(function(e) {
+    console.log(e);
+    console.log("Error getting address; see log.");
+    cb(e, null);
+  });
+};
+
+function joinPhoneToAddress(cb) {
+  var phoneToAddress = PhoneToAddress.deployed();
+
+  var phone = parseInt(document.getElementById("POPInputPhone").value);
+  var addr = document.getElementById("POPInputWallet").value;
+
+  console.log(phone);
+  console.log(addr);
+
+  console.log("Initiating transaction... (please wait)");
+
+  phoneToAddress.getPhoneByAddress.call(addr, {from: account}).then(function(value) {
+    console.log("Phone for address: ");
+    console.log(value);
+    if (value != 0) {
+      console.log("Phone was already set before for this wallet");
+      cb(null, false);
+    } else {
+      phoneToAddress.newPhoneToAddr(addr, phone, {from: account}).then(function() {
+        console.log("Transaction completed!");
+        cb(null, true);
+      }).catch(function(e) {
+        console.log(e);
+        console.log("Error in joining phone; see log.");
+        cb(e, false);
+      });
+    }
+  }).catch(function(e) {
+    console.log(e);
+    console.log("Error getting address; see log.");
+    cb(e, false);
+  });
+};

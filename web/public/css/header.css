@@ -1,0 +1,25 @@
+html{
+    font-family: 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+input:hover,
+input:focus {
+    border: none !important;
+}
+.hide {
+    display: none !important;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    rgb(199,220,225);
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    rgb(199,220,225);
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    rgb(199,220,225);
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    rgb(199,220,225);
+}

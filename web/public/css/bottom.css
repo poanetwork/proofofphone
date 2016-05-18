@@ -1,0 +1,42 @@
+.bottomBar {
+	height: 80px;
+	width: 100%;
+	background: rgb(61,129,143) url("/img/etheriumLogoBottom.png") no-repeat right 160px center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	/*display: table;*/
+}
+.bottomBarCell {
+	/*display: table-cell;*/
+	display: inline-block;
+	vertical-align: middle;
+	height: 80px;
+	width: 50%;
+}
+.bottomBarCell.right {
+	text-align: right;
+}
+.bottomLabelLeft {
+	font-size: 12px;
+	color: rgb(186,236,239);
+	text-shadow: rgb(186,236,239);
+	/*line-height: 80px;*/
+	margin-left: 120px;
+	/*position: absolute;
+	bottom: 15px;*/
+	line-height: 80px;
+}
+.bottomLabelRight {
+	font-size: 14px;
+	color: rgb(186,236,239);
+	text-shadow: rgb(186,236,239);
+	/*font-family: "OpenSansSemiBold";*/
+	font-weight: 600;
+	line-height: 80px;
+	padding-right: 50px;
+	cursor: pointer;
+	/*position: absolute;
+	right: 50px;
+	bottom: 15px;*/
+}

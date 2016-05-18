@@ -1,0 +1,539 @@
+.mainBody {
+	margin: 0 !important;
+}
+.githubRibbon {
+  width: 141;
+  height: 141;
+  /*background: transparent url("/img/gitHubRibbon.png") no-repeat center center;*/
+  content: url("/img/gitHubRibbon.png");
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+.middleMainContainer {
+	width: 100%;
+	/*height: 100%;*/
+	height: calc(100% - 160px);
+	height: -webkit-calc(100% - 160px);
+	height: -moz-calc(100% - 160px);
+	position: absolute;
+	left: 0;
+	top: 80px;
+	bottom: 80x;
+	background: rgb(183,235,240) url("/img/background.png") no-repeat right center;
+	/*padding-top: 80px;*/
+	vertical-align: middle;
+}
+.middleMainContainerInner {
+	width: 50%;
+	height: 100%;
+	padding-left: 120px;
+    position:relative; 
+    vertical-align: middle;
+    display: table;
+}
+.middleMainContainerInnerInner {
+	position:relative; 
+	vertical-align: middle;
+	height: 100%;
+	display: table-cell;
+}
+.POPLabelContainer {
+	margin-bottom: 30px;
+}
+.POPLabel {
+  text-transform: uppercase;
+	/*padding: 5px;*/
+  padding: 7px 12px 7px 12px;
+	background: rgb(87,196,223);
+	color: white;
+	border-radius: 3px;
+  height: 32px !important;
+	font-size: 14px;
+	font-weight: 600;
+}
+.POPTitleContainer {
+	margin-bottom: 20px;
+}
+.POPTitleContainerShortend {
+  margin-bottom: 10px;
+}
+.POPTitle {
+	text-transform: uppercase;
+	color: rgb(48,142,162);
+	font-size: 30px;
+	font-weight: 700;
+}
+.POPBottomDescriptionContainer {
+  width: 600px;
+}
+.POPDescContainer {
+	margin-bottom: 30px;
+}
+.POPDescContainerShortend {
+  margin-bottom: 15px;
+}
+.POPDesc {
+	color: rgb(48,142,162);
+	font-size: 14px;
+	line-height: 25px;
+}
+.inputContainer {
+	margin-bottom: 30px;
+	width: 540px;
+}
+.POPInput {
+  font-family: 'Open Sans', sans-serif;
+	height: 56px;
+	width: 400px;
+	border: none;
+	font-size: 14px;
+	border-radius: 5px;
+	padding-left: 50px;
+	margin-right: 20px;
+}
+.POPInput:focus {
+  outline: none;
+  /*outline-color: rgb(87,196,223);
+  outline-width: 2px;*/
+  /*box-shadow: 0 0 0 1pt rgb(87,196,223);*/
+  padding-left: 48px;
+  border: 2px solid rgb(87,196,223) !important;
+}
+.POPInput.POPInputPhone {
+	background: white url("/img/inputPhone.png") no-repeat left 15px center;
+}
+.POPInput.POPInputSMS {
+	background: white url("/img/inputSMS.png") no-repeat left 15px center;
+}
+.POPInput.POPInputWallet {
+	background: white url("/img/inputWallet.png") no-repeat left 15px center;
+}
+.POPInput.POPInputPhone:focus {
+  background: white url("/img/inputPhone.png") no-repeat left 13px center;
+}
+.POPInput.POPInputSMS:focus {
+  background: white url("/img/inputSMS.png") no-repeat left 13px center;
+}
+.POPInput.POPInputWallet:focus {
+  background: white url("/img/inputWallet.png") no-repeat left 13px center;
+}
+.POPTitle2 {
+	text-transform: uppercase;
+	color: rgb(48,142,162);
+	font-size: 24px;
+	font-weight: 700;
+}
+.POPDescription2 {
+	color: rgb(48,142,162);
+	font-size: 12px;
+	line-height: 20px;
+}
+.POPButton {
+  transition: .2s ease-out;
+    text-transform: uppercase;
+    background: rgb(40,201,122);
+    color: white;
+    border: none;
+    height: 56px;
+    width: 120px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    border-radius: 5px;
+  cursor: pointer;
+}
+.POPButton:hover,
+.POPButton:focus {
+    background: RGB(70, 210, 150);
+}
+.POPButton:focus {
+  outline: none;
+}
+.successTable {
+	border: none;
+	color: white;
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 30px;
+}
+.successTableBody {
+}
+.successTableCellWalletLabel {
+	background: rgb(80,182,207);
+	padding: 15px;
+	border-top-left-radius: 5px !important;
+}
+.successTableCellPhoneLabel {
+	background: rgb(102,197,218);
+	padding: 15px;
+	border-bottom-left-radius: 5px !important;
+}
+.successTableCellWalletValue {
+	background: rgb(87,196,223);
+	padding: 15px;
+	border-top-right-radius: 5px !important;
+}
+.successTableCellPhoneValue {
+	background: rgb(125,212,229);
+	padding: 15px;
+	border-bottom-right-radius: 5px !important;
+}
+.shareButton {
+  transition: .2s ease-out;
+  text-transform: uppercase;
+  background: rgb(40,201,122) url("/img/shareIcon.png") no-repeat left center;
+  color: white;
+  border: none;
+  height: 34px;
+  width: 100px;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  border-radius: 3px;
+  cursor: pointer;
+  vertical-align: middle;
+  padding: 0 0 2px 32px !important;
+  margin-bottom: 20px;
+}
+.shareButton:focus {
+  outline: none;
+}
+.shareButton:hover,
+.shareButton:focus {
+  background: rgb(40,201,122) url("/img/shareIcon.png") no-repeat left center;
+}
+.shareButton.zeroclipboard-is-hover {
+  background: rgb(40,201,122) url("/img/shareIcon.png") no-repeat left center;
+}
+#step3CopyTable {
+  display: inline-block;
+}
+.copyTable {
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.copyTable.nomargin {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.copyTableCellCopyButton {
+  transition: .2s ease-out;
+  background: rgb(80,182,207) url("/img/walletCopy.png") no-repeat center center;
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+  cursor: pointer;
+  width: 42px;
+  height: 40px;
+}
+.copyTableCellCopyButton.zeroclipboard-is-hover {
+  transition: .2s ease-out;
+  background: rgb(115, 196, 217) url("/img/walletCopy.png") no-repeat center center !important;
+}
+.copyTableCellWalletValue1 {
+  background: rgb(156,224,236);
+  color: rgb(48,142,162);
+  /*padding: 15px;*/
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.copyTableCellWalletValue2 {
+   background: rgb(87,196,223);
+   color: white;
+   /*padding: 15px;*/
+   padding-left: 15px;
+   padding-right: 15px;
+   border-top-left-radius: 5px !important;
+   border-bottom-left-radius: 5px !important;
+  
+ }
+.radioContainer {
+  display: table;
+  vertical-align: middle;
+  color: rgb(48,142,162);
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+.radioInnerContainer {
+  display: table-cell;
+  padding-right: 60px;
+}
+.POPradio {
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 11px;
+  display: table-cell;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+}
+.POPradioText {
+  display: table-cell;
+  padding-left: 10px;
+}
+.POPradioSelected {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin-left: 6px;
+  background: rgb(48,142,162);
+}
+.POPradioUnselected {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin-left: 6px;
+  background: white;
+}
+.toast {
+  background: rgb(40,201,122) !important;
+}
+.someOuterContainer {
+  /*display: table !important;
+  vertical-align: middle !important;
+  height: 40px !important;*/
+}
+.someContainer {
+  /*display: table-cell !important;*/
+}
+#bottomDescAddition {
+  margin-top: 20px;
+  /*line-height: 40px !important;*/
+}
+.triangle {
+    position: absolute;
+    transform: translate3d(0, 0, 0);
+	  /*backface-visibility: hidden;
+	  perspective: 1000px;*/
+}
+.triangle1 {
+	content: url("/img/triangles/triangle1.png");
+    top: 6%;
+    right: 40px;
+    border: none;
+    /*border-right:solid 60px transparent;
+    border-left:solid 20px transparent;
+    border-bottom:solid 80px rgb(12,188,112);*/
+    /*transform: rotate(-35deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake1 3s linear both infinite;
+}
+.triangle2 {
+	content: url("/img/triangles/triangle2.png");
+    top: 8%;
+    right: 240px;
+    /*border-right:solid 8px transparent;
+    border-left:solid 4px transparent;
+    border-bottom:solid 22px rgb(135,202,229);
+    transform: rotate(-165deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake2 6s linear both infinite;
+}
+.triangle3 {
+	content: url("/img/triangles/triangle3.png");
+    top: 11%;
+    right: 320px;
+    /*border-right:solid 12px transparent;
+    border-left:solid 8px transparent;
+    border-bottom:solid 32px rgb(238,255,254);
+    transform: rotate(-60deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake3 4s linear both infinite;
+}
+.triangle4 {
+	content: url("/img/triangles/triangle4.png");
+    top: 24%;
+    right: 380px;
+    /*border-right:solid 45px transparent;
+    border-left:solid 55px transparent;
+    border-bottom:solid 45px rgb(80,175,208);
+    transform: rotate(-115deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake1 3s linear both infinite;
+}
+.triangle5 {
+	content: url("/img/triangles/triangle5.png");
+    top: 40%;
+    right: 450px;
+    /*border-right:solid 18px transparent;
+    border-left:solid 24px transparent;
+    border-bottom:solid 15px rgb(137,222,234);
+    transform: rotate(27deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake3 4s linear both infinite;
+}
+.triangle6 {
+	content: url("/img/triangles/triangle6.png");
+    top: 46%;
+    right: 450px;
+    /*border-right:solid 9px transparent;
+    border-left:solid 12px transparent;
+    border-bottom:solid 13px rgb(255,255,255);
+    transform: rotate(-10deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake2 6s linear both infinite;
+}
+.triangle7 {
+	content: url("/img/triangles/triangle7.png");
+    top: 60%;
+    right: 480px;
+    /*border-right:solid 14px transparent;
+    border-left:solid 9px transparent;
+    border-bottom:solid 15px rgb(79,223,134);
+    transform: rotate(-17deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake3 4s linear both infinite;
+}
+.triangle8 {
+	content: url("/img/triangles/triangle8.png");
+    top: 70%;
+    right: 415px;
+    /*border-right:solid 14px transparent;
+    border-left:solid 9px transparent;
+    border-bottom:solid 10px rgb(94,183,213);
+    transform: rotate(32deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake2 6s linear both infinite;
+}
+.triangle9 {
+	content: url("/img/triangles/triangle9.png");
+    top: 72%;
+    right: 305px;
+    /*border-right:solid 32px transparent;
+    border-left:solid 58px transparent;
+    border-bottom:solid 70px rgb(255,255,255);
+    transform: rotate(35deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake1 3s linear both infinite;
+}
+.triangle10 {
+	content: url("/img/triangles/triangle10.png");
+    top: 88%;
+    right: 220px;
+    /*border-right:solid 10px transparent;
+    border-left:solid 10px transparent;
+    border-bottom:solid 25px rgb(60,179,212);
+    transform: rotate(-130deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake3 4s linear both infinite;
+}
+.triangle11 {
+	content: url("/img/triangles/triangle11.png");
+    top: 86%;
+    right: 120px;
+    /*border-right:solid 10px transparent;
+    border-left:solid 10px transparent;
+    border-bottom:solid 13px rgb(132,205,229);
+    transform: rotate(160deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake2 6s linear both infinite;
+}
+.triangle12 {
+	content: url("/img/triangles/triangle12.png");
+    top: 87%;
+    right: 30px;
+    /*border-right:solid 15px transparent;
+    border-left:solid 15px transparent;
+    border-bottom:solid 10px rgb(255,255,255);
+    transform: rotate(145deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake3 4s linear both infinite;
+}
+.triangle13 {
+	content: url("/img/triangles/triangle13.png");
+    top: 40%;
+    right: 60px;
+    /*border-right:solid 30px transparent;
+    border-left:solid 30px transparent;
+    border-bottom:solid 30px rgb(255,255,255);
+    transform: rotate(33deg) translate3d(0, 0, 0);*/
+    transform: translate3d(0, 0, 0);
+    animation: shake1 3s linear both infinite;
+}
+@keyframes shake1 {
+  12.5% {
+    transform: translate3d(2.5px, 0, 0);
+  }
+  25% {
+    transform: translate3d(5px, 0, 0);
+  }
+  37.5% {
+    transform: translate3d(5px, 2.5px, 0);
+  }
+  50% {
+    transform: translate3d(5px, 5px, 0);
+  }
+  62.5% {
+    transform: translate3d(2.5px, 5px, 0);
+  }
+  75% {
+    transform: translate3d(0px, 5px, 0);
+  }
+  87.5% {
+    transform: translate3d(0px, 2.5px, 0);
+  }
+}
+@keyframes shake2 {
+  12.5% {
+    transform: translate3d(0, 2.5px, 0);
+  }
+  25% {
+    transform: translate3d(-2.5px, 2.5px, 0);
+  }
+  37.5% {
+    transform: translate3d(-5px, 2.5px, 0);
+  }
+  50% {
+    transform: translate3d(-5px, 0, 0);
+  }
+  67.5% {
+    transform: translate3d(-5px, -2.5px, 0);
+  }
+  75% {
+    transform: translate3d(-2.5px, -2.5px, 0);
+  }
+  87.5% {
+    transform: translate3d(0, -2.5px, 0);
+  }
+}
+@keyframes shake3 {
+  10% {
+    transform: translate3d(-2.5px, 0, 0);
+  }
+  30% {
+    transform: translate3d(-2.5px, -2.5px, 0);
+  }
+  40% {
+    transform: translate3d(-2.5px, -5px, 0);
+  }
+  50% {
+    transform: translate3d(0, -5px, 0);
+  }
+  60% {
+    transform: translate3d(2.5px, -5px, 0);
+  }
+  80% {
+    transform: translate3d(2.5px, -2.5px, 0);
+  }
+  90% {
+    transform: translate3d(2.5px, 0px, 0);
+  }
+}
+/*rotate(-35deg);*/
+/*rotate(-165deg)*/
+/*rotate(-60deg)*/
+/*rotate(-115deg)*/
+/*rotate(27deg)*/
+/*rotate(-10deg)*/
+/*rotate(-17deg)*/
+/*rotate(32deg)*/
+/*rotate(35deg)*/
+/*rotate(-130deg)*/
+/*rotate(160deg)*/
+/*rotate(145deg)*/
+/*rotate(33deg)*/

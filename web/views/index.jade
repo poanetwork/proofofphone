@@ -1,0 +1,113 @@
+html
+	head
+		title Proof of Phone
+		link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700', rel='stylesheet', type='text/css').
+		link(href="img/favicon.ico",rel="icon" type="image/x-icon").
+		link(rel="stylesheet",href="/libs/materialize/css/materialize.css").
+		link(rel="stylesheet", href="/css/header.css").
+		link(rel="stylesheet", href="/css/index.css").
+		link(rel="stylesheet", href="/libs/loader/stylesheets/loader.css").
+		link(rel="stylesheet",href="/libs/sweetalert/dist/sweetalert.css").
+		//script(type='text/javascript',src='/js/contract.js').
+		script(type='text/javascript',src='/js/getQueryParamsHelper.js').
+		script(type='text/javascript',src='/libs/jquery.min.js').
+		script(type='text/javascript',src='/libs/sweetalert/dist/sweetalert.min.js').
+		script(type='text/javascript',src="/libs/zeroclipboard/dist/ZeroClipboard.js").
+		script(type='text/javascript',src='/libs/materialize/js/materialize.min.js').
+		meta(property="og:site_name", content="Proof of Phone").
+		meta(property="og:title", content="Join your phone number and ethereum address.").
+		meta(property="og:description", content="Proof of phone is a smart oracle developed for the Etherium blockchain to serve as a simple form of KYC (Know-Your-Customer).").
+		meta(property="og:url", content="https://www.proofofphone.com").
+		meta(property="og:image", content= "https://dl.dropboxusercontent.com/s/zzudapto6w9ch3g/proof.png").
+		meta(property="fb:app_id" content="947082938740795").
+		<!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter37176425 = new Ya.Metrika({ id:37176425, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/37176425" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+	body.mainBody
+		include ./top.jade
+		div.middleMainContainer
+			img.triangle.triangle1
+			img.triangle.triangle2
+			img.triangle.triangle3
+			img.triangle.triangle4
+			img.triangle.triangle5
+			img.triangle.triangle6
+			img.triangle.triangle7
+			img.triangle.triangle8
+			img.triangle.triangle9
+			img.triangle.triangle10
+			img.triangle.triangle11
+			img.triangle.triangle12
+			img.triangle.triangle13
+			div.middleMainContainerInner
+				div.middleMainContainerInnerInner
+					div.POPLabelContainer
+						label.POPLabel Step 1
+						input#stepNum(value=1).hide
+						input#token.hide
+					div.POPTitleContainer
+						label.POPTitle Submit your phone number
+					div.POPDescContainer
+						label#topDesc.POPDesc Proof of phone is a smart oracle developed for the Etherium blockchain to serve as a simple form of KYC (Know-Your-Customer).
+					div.inputContainer
+						div.radioContainer.hide
+							input(type="radio", id="radioCheckPhone", name="radioCheck", value="phone").hide
+							input(type="radio", id="radioCheckWallet", name="radioCheck", value="wallet").hide
+							div.radioInnerContainer
+								div#phoneRadio.POPradio
+									div.POPRadioInner.POPradioSelected 
+								span.POPradioText Phone number
+							div#walletRadio.radioInnerContainer
+								div.POPradio
+									div.POPRadioInner.POPradioUnselected 
+								span.POPradioText Ethereum wallet
+						input(id="POPInputPhone" placeholder="Phone number", type="number", autofocus).POPInput.POPInputPhone
+						input(id="POPInputSMS" placeholder="SMS code", type="number").POPInput.POPInputSMS.hide
+						input(id="POPInputWallet" placeholder="Ethereum wallet").POPInput.POPInputWallet.hide
+						button.POPButton#POPSubmit submit
+					div.POPBottomDescriptionContainer
+						div.POPTitleContainer
+							label.POPTitle2 How does it work?
+						div.POPDescContainer
+							label#bottomDesc.POPDesc Enter a phone number you'd like to join with your Ethereum address. We will send you an SMS. After verification, we will ask you to deposit  a service fee of 0.1 ether to a smart contract at the address
+							table#copyHashTable(cellspacing="0" cellpadding="0").copyTable.nomargin.hide
+								tbody.copyTableBody
+									tr
+										td#hashVal.copyTableCellWalletValue2
+										td#hashCopy.copyTableCellCopyButton
+							div.someOuterContainer
+								div.someContainer
+									label#bottomDescAddition.POPDesc.hide
+								div.someContainer
+									table#step3CopyTable(cellspacing="0" cellpadding="0").copyTable.nomargin.hide
+										tbody.copyTableBody
+											tr
+												td.copyTableCellWalletValue2= address
+												td(data-clipboard-text="#{address}")#copyWallet.copyTableCellCopyButton
+							table#step1CopyTable(cellspacing="0" cellpadding="0").copyTable
+								tbody.copyTableBody
+									tr
+										td.copyTableCellWalletValue1= address
+					div.successContainer.hide
+						table(cellspacing="0" cellpadding="0").successTable
+							tbody.successTableBody
+								tr
+									td.successTableCellWalletLabel
+										img(src="/img/inputWalletWhite.png")
+									td.successTableCellWalletValue
+								tr
+									td.successTableCellPhoneLabel
+										img(src="/img/inputSMSWhite.png")
+									td.successTableCellPhoneValue
+						button(data-clipboard-text="").shareButton#POPShare Share
+						div
+							label#bottomDescAddition2.POPDesc.hide
+		img.githubRibbon
+		//img(src="/img/loader.gif").loader.hide
+		div.loader.hide
+			div.loader-i.loader-i_left-top
+			div.loader-i.loader-i_right-top
+			div.loader-i.loader-i_left-center
+			div.loader-i.loader-i_right-center
+			div.loader-i.loader-i_left-bottom
+			div.loader-i.loader-i_right-bottom
+		include ./bottom.jade
+	script(type="text/javascript" src="/js/indexClient.js").

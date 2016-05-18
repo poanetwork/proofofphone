@@ -1,0 +1,62 @@
+.topBar {
+	height: 80px;
+	width: 100%;
+	background: white url("/img/etheriumLogo.png") no-repeat 120px center;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.topLabel {
+	font-size: 18px;
+	color: rgb(62,148,167);
+	text-shadow: rgb(62,148,167);
+	/*font-family: "OpenSansSemiBold";*/
+	font-weight: 600;
+	line-height: 80px;
+	margin-left: 160px;
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.topButtonContainer {
+	float: right;
+  height: 100%;
+  display: table;
+  vertical-align: middle;
+  margin-right: 140px;
+}
+.topButtonInnerContainer {
+	height: 100%;
+  display: table;
+  vertical-align: middle;
+}
+.topButtonInnerInnerContainer {
+	display: table-cell;
+  vertical-align: middle;
+}
+.topButton {
+  transition: .2s ease-out;
+  text-transform: uppercase;
+  color: rgb(62,148,167);
+  border: none;
+  height: 34px;
+  /*width: 100px;*/
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  /*font-family: "OpenSansBold";*/
+  font-weight: 700;
+  border-radius: 3px;
+	cursor: pointer;
+	vertical-align: middle;
+	padding: 0 0 2px 20px !important;
+}
+.topButton:focus {
+  outline: none;
+}
+.homeButton {
+  background: white url("/img/home.png") no-repeat left center;
+  margin-right: 20px;
+}
+.verifyButton {
+  background: white url("/img/check.png") no-repeat left center;
+}
