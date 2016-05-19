@@ -2,6 +2,8 @@
 
 Proof of phone is a smart oracle developed for the Etherium blockchain to serve as a simple form of KYC (Know-Your-Customer).
 
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
+
 ## Installation
 
 1. Download zip archive
@@ -18,7 +20,8 @@ Proof of phone is a smart oracle developed for the Etherium blockchain to serve 
 9. Set `twilio` params for sending SMS, path to mongo DB (`mongodbConnectionString`) for two-factor verification and `salt` for transaction message.
 10. Go to `/web` folder in terminal and start proofofphone web application `node app.js`
 
-### config.json with placeholders
+### 
+config.json with placeholders
 ```
 {
     "environment": "live/dev",
@@ -53,3 +56,16 @@ Proof of phone is a smart oracle developed for the Etherium blockchain to serve 
     }
 }
 ```
+
+## Contributors
+
+Viktor Baranov
+
+Pasha Goncharenko
+
+Igor Barinov
+
+
+## License
+
+MIT
