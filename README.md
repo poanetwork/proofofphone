@@ -1,6 +1,6 @@
 ![Proof of Phone logo](https://raw.githubusercontent.com/blocknotary/proofofphone/master/logo_proof_of_phone.png)
 
-Proof of phone is a smart oracle developed for the Etherium blockchain to serve as a simple form of KYC (Know-Your-Customer).
+Proof of phone is a smart oracle developed for the Ethereum blockchain to serve as a simple form of KYC (Know-Your-Customer).
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
 
