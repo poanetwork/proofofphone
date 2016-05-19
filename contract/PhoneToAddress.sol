@@ -1,4 +1,5 @@
 contract PhoneToAddress {
+        address owner;
         bytes dataEmpty;
         struct PhonePayment {
                 uint phone;
@@ -7,12 +8,18 @@ contract PhoneToAddress {
             }
         mapping(address => PhonePayment) addresses;
         mapping(uint => address) public phones;
+        function PhoneToAddress() {
+            owner = msg.sender;
+        }
         function () {
                 addresses[msg.sender] = PhonePayment({phone: 0, payment: msg.value/100000000000000000, data: msg.data});
         }
         function newPhoneToAddr(address addr, uint phone) {
                 addresses[addr] = PhonePayment({phone: phone, payment: 0, data: dataEmpty});
                 phones[phone] = addr;
+        }
+        function sendEtherToOwner() {                       
+            owner.send(this.balance);
         }
         function getPhoneByAddress(address addr) constant returns(uint) {
                 return addresses[addr].phone;
