@@ -22,7 +22,7 @@ html
 		meta(property="fb:app_id" content="947082938740795").
 		<!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter37176425 = new Ya.Metrika({ id:37176425, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/37176425" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 	body.mainBody
-		include ./top.jade
+		include ./top.pug
 		div.middleMainContainer
 			img.triangle.triangle1
 			img.triangle.triangle2
@@ -53,11 +53,11 @@ html
 							input(type="radio", id="radioCheckWallet", name="radioCheck", value="wallet").hide
 							div.radioInnerContainer
 								div#phoneRadio.POPradio
-									div.POPRadioInner.POPradioSelected 
+									div.POPRadioInner.POPradioSelected
 								span.POPradioText Phone number
 							div#walletRadio.radioInnerContainer
 								div.POPradio
-									div.POPRadioInner.POPradioUnselected 
+									div.POPRadioInner.POPradioUnselected
 								span.POPradioText Ethereum wallet
 						input(id="POPInputPhone" placeholder="Phone number", type="number", autofocus).POPInput.POPInputPhone
 						input(id="POPInputSMS" placeholder="SMS code", type="number").POPInput.POPInputSMS.hide
@@ -109,5 +109,5 @@ html
 			div.loader-i.loader-i_right-center
 			div.loader-i.loader-i_left-bottom
 			div.loader-i.loader-i_right-bottom
-		include ./bottom.jade
+		include ./bottom.pug
 	script(type="text/javascript" src="/js/indexClient.js").
