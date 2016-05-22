@@ -73,7 +73,7 @@ process.on('uncaughtException', function(err) {
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 require('./helpers/commonHelper')(app);
 require('./helpers/etherHelper')(app);
