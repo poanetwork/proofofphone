@@ -2,33 +2,38 @@ contract PhoneToAddress {
         address owner;
         bytes dataEmpty;
         struct PhonePayment {
-                uint phone;
-                uint payment;
-                bytes data;
-            }
+            uint phone;
+            uint payment;
+            bytes data;
+        }
         mapping(address => PhonePayment) addresses;
         mapping(uint => address) public phones;
         function PhoneToAddress() {
             owner = msg.sender;
         }
-        function () {
-                addresses[msg.sender] = PhonePayment({phone: 0, payment: msg.value/100000000000000000, data: msg.data});
+        modifier onlyBy(address _account)
+        {
+            if (msg.sender != _account)
+                throw;
         }
-        function newPhoneToAddr(address addr, uint phone) {
+        function () {
+            addresses[msg.sender] = PhonePayment({phone: 0, payment: msg.value/100000000000000000, data: msg.data});
+        }
+        function newPhoneToAddr(address addr, uint phone) onlyBy(owner) {
                 addresses[addr] = PhonePayment({phone: phone, payment: 0, data: dataEmpty});
                 phones[phone] = addr;
         }
-        function sendEtherToOwner() {                       
-            owner.send(this.balance);
+        function sendEtherToOwner() onlyBy(owner) {                  
+                owner.send(this.balance);
         }
         function getPhoneByAddress(address addr) constant returns(uint) {
-                return addresses[addr].phone;
+            return addresses[addr].phone;
         }
         function getPaymentByAddress(address addr) constant returns(uint) {
-                return addresses[addr].payment;
+            return addresses[addr].payment;
         }
         function getPaymentDataByAddress(address addr) constant returns(bytes) {
-                return addresses[addr].data;
+            return addresses[addr].data;
         }
         function hasPhone(address addr) constant returns(bool) {
             if (addresses[addr].phone != 0) {
@@ -36,5 +41,8 @@ contract PhoneToAddress {
             } else {
                 return false;
             }
+        }
+        function kill() onlyBy(owner) {
+            selfdestruct(owner);   
         }
 }
