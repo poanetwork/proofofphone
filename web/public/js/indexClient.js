@@ -26,7 +26,6 @@ $(document).ready(function() {
 	var bottomDescAddition2 = $('#bottomDescAddition2');
 	var githubRibbon = $('.githubRibbon');
 	var copyTable = $('.copyTable');
-	var copyTableCellCopyButton = $('.copyTableCellCopyButton');
 	var copyTableCellWalletValue1 = $('.copyTableCellWalletValue1');
 	var copyTableCellWalletValue2 = $('.copyTableCellWalletValue2');
 
@@ -286,7 +285,7 @@ $(document).ready(function() {
 							$("#hashCopy").attr("data-clipboard-text", hashToAddress);
 					    });
 					    clientCopyHash.on( "aftercopy", function( event ) {
-					      Materialize.toast('hash copied to buffer', 3000, 'rounded');
+					      Materialize.toast('message copied to buffer', 3000, 'rounded');
 					    });
 				  	});
 

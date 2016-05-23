@@ -223,7 +223,7 @@
 }
 .copyTableCellCopyButton {
   transition: .2s ease-out;
-  background: rgb(80,182,207) url("/img/walletCopy.png") no-repeat center center;
+  background: rgb(80,182,207) url("/img/wallet_icon.png") no-repeat center center;
   border-top-right-radius: 5px !important;
   border-bottom-right-radius: 5px !important;
   cursor: pointer;
@@ -232,7 +232,20 @@
 }
 .copyTableCellCopyButton.zeroclipboard-is-hover {
   transition: .2s ease-out;
-  background: rgb(115, 196, 217) url("/img/walletCopy.png") no-repeat center center !important;
+  background: rgb(115, 196, 217) url("/img/wallet_icon.png") no-repeat center center !important;
+}
+.copyTableCellCopyButton2 {
+  transition: .2s ease-out;
+  background: rgb(80,182,207) url("/img/message_icon.png") no-repeat center center;
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+  cursor: pointer;
+  width: 42px;
+  height: 40px;
+}
+.copyTableCellCopyButton2.zeroclipboard-is-hover {
+  transition: .2s ease-out;
+  background: rgb(115, 196, 217) url("/img/message_icon.png") no-repeat center center !important;
 }
 .copyTableCellWalletValue1 {
   background: rgb(156,224,236);

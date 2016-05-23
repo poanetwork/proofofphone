@@ -1,4 +1,3 @@
-var mongodb = require('mongodb');
 var fs = require('fs');
 
 var config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
@@ -45,6 +44,7 @@ function deployContract() {
 	    data: compiled
 	});
 	console.log(gasWillUsed);
+	//gasWillUsed += 30000;
 
 	var phonetoaddressContract = web3.eth.contract(contractABI);
 	phonetoaddressContract.new(

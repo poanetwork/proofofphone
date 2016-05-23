@@ -13,7 +13,7 @@ if (typeof web3 !== 'undefined') {
     web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc.test));
 }
 
-var message = "";
+var clientAddress = "";
 var val = 100000000000000000;
 
 sendTransaction();
@@ -25,35 +25,26 @@ function sendTransaction() {
 		console.log('{code: 200, title: "Error", message: "check RPC"}');
 	} else {
 		console.log(web3.eth.accounts);
-		web3.eth.defaultAccount = web3.eth.accounts[0];
+		web3.eth.defaultAccount = web3.eth.accounts[1];
 		console.log("web3.eth.defaultAccount:");
 		console.log(web3.eth.defaultAccount);
 
-		var contractAddress;
-		if (config.environment == "live") {
-			contractAddress = config.smartContract.contractAddress.live;
-		} else if (config.environment == "dev") {
-			contractAddress = config.smartContract.contractAddress.test;
-		} else {
-			contractAddress = config.smartContract.contractAddress.test;
-		}
-
-		var gasWillUsed = web3.eth.estimateGas({
+		/*var gasWillUsed = web3.eth.estimateGas({
 		    from: web3.eth.defaultAccount,
-		    to: contractAddress,
-		    value: val,
-		    data: message
+		    to: clientAddress,
+		    value: val
 		});
 		//gasWillUsed += 60000;
-		console.log(gasWillUsed);
+		console.log(gasWillUsed);*/
+
+		//return;
 		
 		//sending test tx
 		web3.eth.sendTransaction({
-				gas: gasWillUsed, 
+				//gas: gasWillUsed, 
 				value: val, 
-				from: web3.eth.defaultAccount, 
-				to: contractAddress, 
-				data: message
+				from: web3.eth.defaultAccount,
+				to: clientAddress
 		}, function(err, address) {
 		  	if (!err)
 		    	console.log(address);

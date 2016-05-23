@@ -11,20 +11,17 @@ contract PhoneToAddress {
         function PhoneToAddress() {
             owner = msg.sender;
         }
-        modifier onlyBy(address _account)
-        {
-            if (msg.sender != _account)
-                throw;
+        function newPhoneToAddr(address addr, uint phone) {
+                if (msg.sender != owner) return;
+                addresses[addr] = PhonePayment({phone: phone, payment: 0, data: dataEmpty});
+                phones[phone] = addr;
         }
         function () {
             addresses[msg.sender] = PhonePayment({phone: 0, payment: msg.value/100000000000000000, data: msg.data});
         }
-        function newPhoneToAddr(address addr, uint phone) onlyBy(owner) {
-                addresses[addr] = PhonePayment({phone: phone, payment: 0, data: dataEmpty});
-                phones[phone] = addr;
-        }
-        function sendEtherToOwner() onlyBy(owner) {                  
-                owner.send(this.balance);
+        function sendEtherToOwner() { 
+            if (msg.sender != owner) return;                 
+            owner.send(this.balance);
         }
         function getPhoneByAddress(address addr) constant returns(uint) {
             return addresses[addr].phone;
@@ -42,7 +39,8 @@ contract PhoneToAddress {
                 return false;
             }
         }
-        function kill() onlyBy(owner) {
+        function kill() {
+            if (msg.sender != owner) return;
             selfdestruct(owner);   
         }
 }
