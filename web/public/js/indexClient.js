@@ -49,6 +49,8 @@ $(document).ready(function() {
 	var copyHashTable = $('#copyHashTable');
 	var hashToAddress = "";
 
+	var addressVal = $("#addressVal");
+
 	var wallet = QueryString.wallet;
 	if (wallet) {
 		POPInputWallet.val(wallet);
@@ -69,6 +71,10 @@ $(document).ready(function() {
 	var clientCopyWallet = new ZeroClipboard( document.getElementById("copyWallet") );
 
 	clientCopyWallet.on( "ready", function( readyEvent ) {
+		clientCopyWallet.on( "beforecopy", function( event ) {
+			var addr = addressVal.text();
+			$("#copyWallet").attr("data-clipboard-text",addr);
+	    });
 	    clientCopyWallet.on( "aftercopy", function( event ) {
 	      Materialize.toast('Address copied to buffer', 3000, 'rounded');
 	    });
@@ -324,17 +330,9 @@ $(document).ready(function() {
 					bottomDescAddition2.html('There is a smart contract deployed to the public ethereum Blockchain. You can find it here:\
 						<table cellspacing="0" cellpadding="0" class="copyTable nomargin" style="display: table;"><tbody class="copyTableBody"><tr><td class="copyTableCellWalletValue2">' 
 						+ copyTableCellWalletValue1.text() + 
-						'</td><td id="copyWallet2" data-clipboard-text="'+ copyTableCellWalletValue1.text() + '" class="copyTableCellCopyButton"></td></tr></tbody></table>This contract has the following public method signature:\
+						'</td><td id="copyWallet3" data-clipboard-text="'+ copyTableCellWalletValue1.text() + '" class="copyTableCellCopyButton"></td></tr></tbody></table>This contract has the following public method signature:\
 						hasPhone (address _addr).<br/>\
 						If the _addr is registered in the contract\'s Phone Registry, the hasPhone method returns true. Otherwise it returns false.');
-					
-					var clientCopyWallet2 = new ZeroClipboard( document.getElementById("copyWallet2") );
-
-					clientCopyWallet2.on( "ready", function( readyEvent ) {
-					    clientCopyWallet2.on( "aftercopy", function( event ) {
-					      Materialize.toast('Address copied to buffer', 3000, 'rounded');
-					    });
-				  	});
 
 					successTableCellWalletValue.text(POPInputWallet.val());
 					successTableCellPhoneValue.text(POPInputPhone.val());
@@ -351,6 +349,14 @@ $(document).ready(function() {
 					POPTitleContainerShortend.removeClass("POPTitleContainerShortend");
 					POPDescContainerShortend.addClass("POPDescContainer");
 					POPDescContainerShortend.removeClass("POPDescContainerShortend");
+
+					var clientCopyWallet3 = new ZeroClipboard( $("#copyWallet3")[0] );
+
+					clientCopyWallet3.on( "ready", function( readyEvent ) {
+					    clientCopyWallet3.on( "aftercopy", function( event ) {
+					      Materialize.toast('Address copied to buffer', 3000, 'rounded');
+					    });
+				  	});
 				}
 				break;
 			case 5:
@@ -363,13 +369,6 @@ $(document).ready(function() {
 						'</td><td id="copyWallet2" data-clipboard-text="'+ copyTableCellWalletValue1.text() + '" class="copyTableCellCopyButton"></td></tr></tbody></table>This contract has the following public method signature:\
 						hasPhone (address _addr).<br/>\
 						If the _addr is registered in the contract\'s Phone Registry, the hasPhone method returns true. Otherwise it returns false.');
-					var clientCopyWallet2 = new ZeroClipboard( document.getElementById("copyWallet2") );
-
-					clientCopyWallet2.on( "ready", function( readyEvent ) {
-					    clientCopyWallet2.on( "aftercopy", function( event ) {
-					      Materialize.toast('Address copied to buffer', 3000, 'rounded');
-					    });
-				  	});
 
 					POPBottomDescriptionContainer.show();
 					stepLabel.addClass("hide");
@@ -392,6 +391,16 @@ $(document).ready(function() {
 					POPTitleContainer.removeClass("POPTitleContainer");
 					POPDescContainer.addClass("POPDescContainerShortend");
 					POPDescContainer.removeClass("POPDescContainer");
+
+					var clientCopyWallet2 = new ZeroClipboard( $("#copyWallet2")[0] );
+
+					console.log(clientCopyWallet2);
+
+					clientCopyWallet2.on( "ready", function( readyEvent ) {
+						clientCopyWallet2.on( "aftercopy", function( event ) {
+					      Materialize.toast('Address copied to buffer', 3000, 'rounded');
+					    });
+				  	});
 				}
 				break;
 			default:

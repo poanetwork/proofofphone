@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "express": "~4.13.x",
-    "jade": "^1.11.0",
     "twilio": "~2.9.x",
     "mongodb": "~2.1.x",
     "body-parser": "^1.12.4",
