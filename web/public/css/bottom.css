@@ -22,10 +22,12 @@
 	color: rgb(186,236,239);
 	text-shadow: rgb(186,236,239);
 	/*line-height: 80px;*/
-	margin-left: 120px;
 	/*position: absolute;
 	bottom: 15px;*/
 	line-height: 80px;
+}
+.bottomLabelLeft.leftMargin {
+	margin-left: 120px;
 }
 .bottomLabelRight {
 	font-size: 14px;
