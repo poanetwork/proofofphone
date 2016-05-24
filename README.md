@@ -69,3 +69,7 @@ Igor Barinov
 ## License
 
 MIT
+
+## Support
+
+Supported by [Wanxiang Blockchain Labs](http://www.blockchainlabs.org/blockgrant-x-en/)
