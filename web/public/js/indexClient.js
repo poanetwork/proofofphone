@@ -49,6 +49,10 @@ $(document).ready(function() {
 	var copyHashTable = $('#copyHashTable');
 	var hashToAddress = "";
 
+	var checkboxContainer = $(".checkboxContainer");
+	var POPcheckbox = $(".POPcheckbox");
+	var privacyPolicyCheckbox = $("#privacyPolicyCheckbox");
+
 	var addressVal = $("#addressVal");
 
 	var wallet = QueryString.wallet;
@@ -95,6 +99,18 @@ $(document).ready(function() {
 
   	phoneRadio.click(function(e) {
   		phoneRadioCheck();
+  	});
+
+  	POPcheckbox.click(function(e) {
+  		if ($(this).find(".POPcheckboxSelected")[0]) {
+  			$(this).find(".POPcheckboxSelected").addClass("POPcheckboxUnselected");
+  			$(this).find(".POPcheckboxSelected").removeClass("POPcheckboxSelected");
+  			privacyPolicyCheckbox.prop( "checked", false );
+  		} else {
+  			$(this).find(".POPcheckboxUnselected").addClass("POPcheckboxSelected");
+  			$(this).find(".POPcheckboxUnselected").removeClass("POPcheckboxUnselected");
+  			privacyPolicyCheckbox.prop( "checked", true );
+  		}
   	});
 
   	function phoneRadioCheck() {
@@ -252,6 +268,7 @@ $(document).ready(function() {
 					POPTitleContainerShortend.removeClass("POPTitleContainerShortend");
 					POPDescContainerShortend.addClass("POPDescContainer");
 					POPDescContainerShortend.removeClass("POPDescContainerShortend");
+					checkboxContainer.removeClass("hide");
 				}
 				break;
 			case 2:
@@ -276,6 +293,7 @@ $(document).ready(function() {
 					POPTitleContainerShortend.removeClass("POPTitleContainerShortend");
 					POPDescContainerShortend.addClass("POPDescContainer");
 					POPDescContainerShortend.removeClass("POPDescContainerShortend");
+					checkboxContainer.addClass("hide");
 				}
 				break;
 			case 3:
@@ -314,6 +332,7 @@ $(document).ready(function() {
 					POPTitleContainerShortend.removeClass("POPTitleContainerShortend");
 					POPDescContainerShortend.addClass("POPDescContainer");
 					POPDescContainerShortend.removeClass("POPDescContainerShortend");
+					checkboxContainer.addClass("hide");
 				}
 				break;
 			case 4:
@@ -349,6 +368,7 @@ $(document).ready(function() {
 					POPTitleContainerShortend.removeClass("POPTitleContainerShortend");
 					POPDescContainerShortend.addClass("POPDescContainer");
 					POPDescContainerShortend.removeClass("POPDescContainerShortend");
+					checkboxContainer.addClass("hide");
 
 					var clientCopyWallet3 = new ZeroClipboard( $("#copyWallet3")[0] );
 
@@ -401,6 +421,7 @@ $(document).ready(function() {
 					      Materialize.toast('Address copied to buffer', 3000, 'rounded');
 					    });
 				  	});
+				  	checkboxContainer.addClass("hide");
 				}
 				break;
 			default:

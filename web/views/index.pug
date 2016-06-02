@@ -45,7 +45,7 @@ html
 						input#token.hide
 					div.POPTitleContainer
 						label.POPTitle Submit your phone number
-					div.POPDescContainer
+					div.POPDescContainer.marginBottom2
 						label#topDesc.POPDesc Proof of phone is a smart oracle developed for the Etherium blockchain to serve as a simple form of KYC (Know-Your-Customer).
 					div.inputContainer
 						div.radioContainer.hide
@@ -53,7 +53,7 @@ html
 							input(type="radio", id="radioCheckWallet", name="radioCheck", value="wallet").hide
 							div.radioInnerContainer
 								div#phoneRadio.POPradio
-									div.POPRadioInner.POPradioSelected 
+									div.POPRadioInner.POPradioSelected
 								span.POPradioText Phone number
 							div#walletRadio.radioInnerContainer
 								div.POPradio
@@ -63,8 +63,16 @@ html
 						input(id="POPInputSMS" placeholder="SMS code", type="number").POPInput.POPInputSMS.hide
 						input(id="POPInputWallet" placeholder="Ethereum wallet").POPInput.POPInputWallet.hide
 						button.POPButton#POPSubmit submit
+					div.checkboxContainer
+						div.checkboxInnerContainer
+							div.checkboxInnerContainerCell
+								div.POPcheckbox
+									div.POPcheckboxSelected
+							div.checkboxInnerContainerCell
+								span.POPCheckboxDesc I understand that this is a proof-of-concept, my phone number will be permanently stored unencrypted on the Ethereum blockchain and connected to my public key
+						input(type="checkbox", name="privacyPolicyCheckbox", id="privacyPolicyCheckbox", checked).hide
 					div.POPBottomDescriptionContainer
-						div.POPTitleContainer
+						div.POPTitleContainer.marginBottom1
 							label.POPTitle2 How does it work?
 						div.POPDescContainer
 							label#bottomDesc.POPDesc Enter a phone number you'd like to join with your Ethereum address. We will send you an SMS. After verification, we will ask you to deposit  a service fee of 0.1 ether to a smart contract at the address
@@ -82,7 +90,7 @@ html
 											tr
 												td#addressVal.copyTableCellWalletValue2= address
 												td(data-clipboard-text="#{address}")#copyWallet.copyTableCellCopyButton
-							table#step1CopyTable(cellspacing="0" cellpadding="0").copyTable
+							table#step1CopyTable(cellspacing="0" cellpadding="0").copyTable.marginTop1
 								tbody.copyTableBody
 									tr
 										td.copyTableCellWalletValue1= address

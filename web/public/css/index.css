@@ -79,9 +79,19 @@
 	font-size: 14px;
 	line-height: 25px;
 }
+.POPCheckboxDesc {
+  color: rgb(48,142,162);
+  font-size: 12px;
+  line-height: 17px;
+  width: 100%;
+}
 .inputContainer {
-	margin-bottom: 30px;
+	margin-bottom: 5px;
 	width: 540px;
+}
+.checkboxContainer {
+  margin-bottom: 10px;
+  width: 400;
 }
 .POPInput {
   font-family: 'Open Sans', sans-serif;
@@ -274,6 +284,32 @@
 .radioInnerContainer {
   display: table-cell;
   padding-right: 60px;
+}
+.checkboxInnerContainer {
+  display: table;
+}
+.checkboxInnerContainerCell {
+  display: table-cell;
+}
+.POPcheckbox {
+  width: 14px !important;
+  height: 14px !important;
+  background: white;
+  border-radius: 3px;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  margin-right: 5px;
+}
+.POPcheckboxSelected {
+  width: 14px;
+  height: 14px;
+  background: transparent url("/img/checkbox.png") no-repeat center center;
+}
+.POPcheckboxUnselected {
+  width: 14px;
+  height: 14px;
+  background: transparent;
 }
 .POPradio {
   width: 22px;
@@ -550,3 +586,12 @@
 /*rotate(160deg)*/
 /*rotate(145deg)*/
 /*rotate(33deg)*/
+.marginBottom1 {
+  margin-bottom: 5px !important;
+}
+.marginBottom2 {
+  margin-bottom: 15px !important;
+}
+.marginTop1 {
+  margin-top: 5px !important;
+}
