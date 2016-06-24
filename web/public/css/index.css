@@ -66,7 +66,7 @@
 	font-weight: 700;
 }
 .POPBottomDescriptionContainer {
-  width: 600px;
+  width: 610px;
 }
 .POPDescContainer {
 	margin-bottom: 30px;
@@ -233,7 +233,7 @@
 }
 .copyTableCellCopyButton {
   transition: .2s ease-out;
-  background: rgb(80,182,207) url("/img/wallet_icon.png") no-repeat center center;
+  background: rgb(80,182,207) url("/img/copy.png") no-repeat center center;
   border-top-right-radius: 5px !important;
   border-bottom-right-radius: 5px !important;
   cursor: pointer;
@@ -242,11 +242,11 @@
 }
 .copyTableCellCopyButton.zeroclipboard-is-hover {
   transition: .2s ease-out;
-  background: rgb(115, 196, 217) url("/img/wallet_icon.png") no-repeat center center !important;
+  background: rgb(115, 196, 217) url("/img/copy.png") no-repeat center center !important;
 }
 .copyTableCellCopyButton2 {
   transition: .2s ease-out;
-  background: rgb(80,182,207) url("/img/message_icon.png") no-repeat center center;
+  background: rgb(80,182,207) url("/img/copy.png") no-repeat center center;
   border-top-right-radius: 5px !important;
   border-bottom-right-radius: 5px !important;
   cursor: pointer;
@@ -255,7 +255,7 @@
 }
 .copyTableCellCopyButton2.zeroclipboard-is-hover {
   transition: .2s ease-out;
-  background: rgb(115, 196, 217) url("/img/message_icon.png") no-repeat center center !important;
+  background: rgb(115, 196, 217) url("/img/copy.png") no-repeat center center !important;
 }
 .copyTableCellWalletValue1 {
   background: rgb(156,224,236);
@@ -265,15 +265,21 @@
   padding-right: 5px;
 }
 .copyTableCellWalletValue2 {
-   background: rgb(87,196,223);
+   background: rgb(87,196,223) url("/img/wallet_icon.png") no-repeat 15px center;
    color: white;
    /*padding: 15px;*/
-   padding-left: 15px;
+   padding-left: 48px;
    padding-right: 15px;
    border-top-left-radius: 5px !important;
    border-bottom-left-radius: 5px !important;
   
  }
+#addressVal {
+  background: rgb(87,196,223) url("/img/wallet_icon.png") no-repeat 15px center;
+}
+#hashVal {
+  background: rgb(87,196,223) url("/img/message_icon.png") no-repeat 15px center;
+}
 .radioContainer {
   display: table;
   vertical-align: middle;

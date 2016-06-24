@@ -63,14 +63,15 @@ html
 						input(id="POPInputSMS" placeholder="SMS code", type="number").POPInput.POPInputSMS.hide
 						input(id="POPInputWallet" placeholder="Ethereum wallet").POPInput.POPInputWallet.hide
 						button.POPButton#POPSubmit submit
-					div.checkboxContainer
-						div.checkboxInnerContainer
-							div.checkboxInnerContainerCell
-								div.POPcheckbox
-									div.POPcheckboxSelected
-							div.checkboxInnerContainerCell
-								span.POPCheckboxDesc I understand that this is a proof-of-concept, my phone number will be permanently stored unencrypted on the Ethereum blockchain and connected to my public key
-						input(type="checkbox", name="privacyPolicyCheckbox", id="privacyPolicyCheckbox", checked).hide
+					//
+						div.checkboxContainer
+							div.checkboxInnerContainer
+								div.checkboxInnerContainerCell
+									div.POPcheckbox
+										div.POPcheckboxSelected
+								div.checkboxInnerContainerCell
+									span.POPCheckboxDesc I understand that this is a proof-of-concept, my phone number will be permanently stored unencrypted on the Ethereum blockchain and connected to my public key
+							input(type="checkbox", name="privacyPolicyCheckbox", id="privacyPolicyCheckbox", checked).hide
 					div.POPBottomDescriptionContainer
 						div.POPTitleContainer.marginBottom1
 							label.POPTitle2 How does it work?
