@@ -1,7 +1,7 @@
 .bottomBar {
 	height: 80px;
 	width: 100%;
-	background: rgb(61,129,143) url("/img/etheriumLogoBottom.png") no-repeat right 160px center;
+	background: rgb(61,129,143) url("/img/ethereumLogoBottom.png") no-repeat right 160px center;
 	position: fixed;
 	bottom: 0;
 	left: 0;
