@@ -4,8 +4,8 @@
 .githubRibbon {
   width: 141;
   height: 141;
-  /*background: transparent url("/img/gitHubRibbon.png") no-repeat center center;*/
-  content: url("/img/gitHubRibbon.png");
+  background: transparent url("/img/gitHubRibbon.png") no-repeat center center;
+  /*content: url("/img/gitHubRibbon.png");*/
   position: absolute;
   top: 0;
   right: 0;
@@ -367,148 +367,187 @@
 	  perspective: 1000px;*/
 }
 .triangle1 {
-	content: url("/img/triangles/triangle1.png");
-    top: 6%;
-    right: 40px;
-    border: none;
-    /*border-right:solid 60px transparent;
-    border-left:solid 20px transparent;
-    border-bottom:solid 80px rgb(12,188,112);*/
-    /*transform: rotate(-35deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake1 3s linear both infinite;
+	/*content: url("/img/triangles/triangle1.png");*/
+  background: transparent url("/img/triangles/triangle1.png") no-repeat center center;
+  top: 6%;
+  right: 40px;
+  border: none;
+  /*border-right:solid 60px transparent;
+  border-left:solid 20px transparent;
+  border-bottom:solid 80px rgb(12,188,112);*/
+  /*transform: rotate(-35deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake1 3s linear both infinite;
+  width: 133px;
+  height: 110px;
 }
 .triangle2 {
-	content: url("/img/triangles/triangle2.png");
-    top: 8%;
-    right: 240px;
-    /*border-right:solid 8px transparent;
-    border-left:solid 4px transparent;
-    border-bottom:solid 22px rgb(135,202,229);
-    transform: rotate(-165deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake2 6s linear both infinite;
+	/*content: url("/img/triangles/triangle2.png");*/
+  background: transparent url("/img/triangles/triangle2.png") no-repeat center center;
+  top: 8%;
+  right: 240px;
+  /*border-right:solid 8px transparent;
+  border-left:solid 4px transparent;
+  border-bottom:solid 22px rgb(135,202,229);
+  transform: rotate(-165deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake2 6s linear both infinite;
+  width: 12px;
+  height: 20px;
 }
 .triangle3 {
-	content: url("/img/triangles/triangle3.png");
-    top: 11%;
-    right: 320px;
-    /*border-right:solid 12px transparent;
-    border-left:solid 8px transparent;
-    border-bottom:solid 32px rgb(238,255,254);
-    transform: rotate(-60deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake3 4s linear both infinite;
+	/*content: url("/img/triangles/triangle3.png");*/
+  background: transparent url("/img/triangles/triangle3.png") no-repeat center center;
+  top: 11%;
+  right: 320px;
+  /*border-right:solid 12px transparent;
+  border-left:solid 8px transparent;
+  border-bottom:solid 32px rgb(238,255,254);
+  transform: rotate(-60deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake3 4s linear both infinite;
+  width: 36px;
+  height: 27px;
 }
 .triangle4 {
-	content: url("/img/triangles/triangle4.png");
-    top: 24%;
-    right: 380px;
-    /*border-right:solid 45px transparent;
-    border-left:solid 55px transparent;
-    border-bottom:solid 45px rgb(80,175,208);
-    transform: rotate(-115deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake1 3s linear both infinite;
+	/*content: url("/img/triangles/triangle4.png");*/
+  background: transparent url("/img/triangles/triangle4.png") no-repeat center center;
+  top: 24%;
+  right: 380px;
+  /*border-right:solid 45px transparent;
+  border-left:solid 55px transparent;
+  border-bottom:solid 45px rgb(80,175,208);
+  transform: rotate(-115deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake1 3s linear both infinite;
+  width: 87px;
+  height: 126px;
 }
 .triangle5 {
-	content: url("/img/triangles/triangle5.png");
-    top: 40%;
-    right: 450px;
-    /*border-right:solid 18px transparent;
-    border-left:solid 24px transparent;
-    border-bottom:solid 15px rgb(137,222,234);
-    transform: rotate(27deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake3 4s linear both infinite;
+	/*content: url("/img/triangles/triangle5.png");*/
+  background: transparent url("/img/triangles/triangle5.png") no-repeat center center;
+  top: 40%;
+  right: 450px;
+  /*border-right:solid 18px transparent;
+  border-left:solid 24px transparent;
+  border-bottom:solid 15px rgb(137,222,234);
+  transform: rotate(27deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake3 4s linear both infinite;
+  width: 36px;
+  height:26px;
 }
 .triangle6 {
-	content: url("/img/triangles/triangle6.png");
-    top: 46%;
-    right: 450px;
-    /*border-right:solid 9px transparent;
-    border-left:solid 12px transparent;
-    border-bottom:solid 13px rgb(255,255,255);
-    transform: rotate(-10deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake2 6s linear both infinite;
+	/*content: url("/img/triangles/triangle6.png");*/
+  background: transparent url("/img/triangles/triangle6.png") no-repeat center center;
+  top: 46%;
+  right: 450px;
+  /*border-right:solid 9px transparent;
+  border-left:solid 12px transparent;
+  border-bottom:solid 13px rgb(255,255,255);
+  transform: rotate(-10deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake2 6s linear both infinite;
+  width: 29px;
+  height:21px;
 }
 .triangle7 {
-	content: url("/img/triangles/triangle7.png");
-    top: 60%;
-    right: 480px;
-    /*border-right:solid 14px transparent;
-    border-left:solid 9px transparent;
-    border-bottom:solid 15px rgb(79,223,134);
-    transform: rotate(-17deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake3 4s linear both infinite;
+	/*content: url("/img/triangles/triangle7.png");*/
+  background: transparent url("/img/triangles/triangle7.png") no-repeat center center;
+  top: 60%;
+  right: 480px;
+  /*border-right:solid 14px transparent;
+  border-left:solid 9px transparent;
+  border-bottom:solid 15px rgb(79,223,134);
+  transform: rotate(-17deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake3 4s linear both infinite;
+  width: 35px;
+  height:27px;
 }
 .triangle8 {
-	content: url("/img/triangles/triangle8.png");
-    top: 70%;
-    right: 415px;
-    /*border-right:solid 14px transparent;
-    border-left:solid 9px transparent;
-    border-bottom:solid 10px rgb(94,183,213);
-    transform: rotate(32deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake2 6s linear both infinite;
+	/*content: url("/img/triangles/triangle8.png");*/
+  background: transparent url("/img/triangles/triangle8.png") no-repeat center center;
+  top: 70%;
+  right: 415px;
+  /*border-right:solid 14px transparent;
+  border-left:solid 9px transparent;
+  border-bottom:solid 10px rgb(94,183,213);
+  transform: rotate(32deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake2 6s linear both infinite;
+  width: 17px;
+  height:15px;
 }
 .triangle9 {
-	content: url("/img/triangles/triangle9.png");
-    top: 72%;
-    right: 305px;
-    /*border-right:solid 32px transparent;
-    border-left:solid 58px transparent;
-    border-bottom:solid 70px rgb(255,255,255);
-    transform: rotate(35deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake1 3s linear both infinite;
+	/*content: url("/img/triangles/triangle9.png");*/
+  background: transparent url("/img/triangles/triangle9.png") no-repeat center center;
+  top: 72%;
+  right: 305px;
+  /*border-right:solid 32px transparent;
+  border-left:solid 58px transparent;
+  border-bottom:solid 70px rgb(255,255,255);
+  transform: rotate(35deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake1 3s linear both infinite;
+  width: 132px;
+  height:105px;
 }
 .triangle10 {
-	content: url("/img/triangles/triangle10.png");
-    top: 88%;
-    right: 220px;
-    /*border-right:solid 10px transparent;
-    border-left:solid 10px transparent;
-    border-bottom:solid 25px rgb(60,179,212);
-    transform: rotate(-130deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake3 4s linear both infinite;
+	/*content: url("/img/triangles/triangle10.png");*/
+  background: transparent url("/img/triangles/triangle10.png") no-repeat center center;
+  top: 88%;
+  right: 220px;
+  /*border-right:solid 10px transparent;
+  border-left:solid 10px transparent;
+  border-bottom:solid 25px rgb(60,179,212);
+  transform: rotate(-130deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake3 4s linear both infinite;
+  width: 31px;
+  height:30px;
 }
 .triangle11 {
-	content: url("/img/triangles/triangle11.png");
-    top: 86%;
-    right: 120px;
-    /*border-right:solid 10px transparent;
-    border-left:solid 10px transparent;
-    border-bottom:solid 13px rgb(132,205,229);
-    transform: rotate(160deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake2 6s linear both infinite;
+	/*content: url("/img/triangles/triangle11.png");*/
+  background: transparent url("/img/triangles/triangle11.png") no-repeat center center;
+  top: 86%;
+  right: 120px;
+  /*border-right:solid 10px transparent;
+  border-left:solid 10px transparent;
+  border-bottom:solid 13px rgb(132,205,229);
+  transform: rotate(160deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake2 6s linear both infinite;
+  width: 20px;
+  height:15px;
 }
 .triangle12 {
-	content: url("/img/triangles/triangle12.png");
-    top: 87%;
-    right: 30px;
-    /*border-right:solid 15px transparent;
-    border-left:solid 15px transparent;
-    border-bottom:solid 10px rgb(255,255,255);
-    transform: rotate(145deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake3 4s linear both infinite;
+	/*content: url("/img/triangles/triangle12.png");*/
+  background: transparent url("/img/triangles/triangle12.png") no-repeat center center;
+  top: 87%;
+  right: 30px;
+  /*border-right:solid 15px transparent;
+  border-left:solid 15px transparent;
+  border-bottom:solid 10px rgb(255,255,255);
+  transform: rotate(145deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake3 4s linear both infinite;
+  width: 27px;
+  height:24px;
 }
 .triangle13 {
-	content: url("/img/triangles/triangle13.png");
-    top: 40%;
-    right: 60px;
-    /*border-right:solid 30px transparent;
-    border-left:solid 30px transparent;
-    border-bottom:solid 30px rgb(255,255,255);
-    transform: rotate(33deg) translate3d(0, 0, 0);*/
-    transform: translate3d(0, 0, 0);
-    animation: shake1 3s linear both infinite;
+	/*content: url("/img/triangles/triangle13.png");*/
+  background: transparent url("/img/triangles/triangle13.png") no-repeat center center;
+  top: 40%;
+  right: 60px;
+  /*border-right:solid 30px transparent;
+  border-left:solid 30px transparent;
+  border-bottom:solid 30px rgb(255,255,255);
+  transform: rotate(33deg) translate3d(0, 0, 0);*/
+  transform: translate3d(0, 0, 0);
+  animation: shake1 3s linear both infinite;
+  width: 102px;
+  height:83px;
 }
 @keyframes shake1 {
   12.5% {
