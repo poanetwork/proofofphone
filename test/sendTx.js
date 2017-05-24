@@ -5,12 +5,7 @@ var config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider);
 } else {
-  if (config.environment == "live")
-    web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc.live));
-  else if (config.environment == "dev")
-    web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc.test));
-  else
-    web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc.test));
+  web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc[config.environment]));
 }
 
 var message = "";
@@ -29,14 +24,7 @@ function sendTransaction() {
 		console.log("web3.eth.defaultAccount:");
 		console.log(web3.eth.defaultAccount);
 
-		var contractAddress;
-		if (config.environment == "live") {
-			contractAddress = config.smartContract.contractAddress.live;
-		} else if (config.environment == "dev") {
-			contractAddress = config.smartContract.contractAddress.test;
-		} else {
-			contractAddress = config.smartContract.contractAddress.test;
-		}
+		var contractAddress = config.smartContract.contractAddress[config.environment];
 
 		var gasWillUsed = web3.eth.estimateGas({
 		    from: web3.eth.defaultAccount,

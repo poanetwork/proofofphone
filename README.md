@@ -9,7 +9,7 @@ Proof of phone is a smart oracle developed for the Ethereum blockchain to serve 
 1. Download zip archive
 2. Unpack it
 3. Go to the /web folder in terminal and install the dependencies `npm install`
-4. Set **environment** in web/config.json (see config.json with placeholders below): `dev` or `live`
+4. Set **environment** in web/config.json (see config.json with placeholders below): `test` or `live`
 5. Set smart contract key points in web/config.json (see config.json with placeholders below):
     * `wallet.test`, `wallet.live`
     * `rpc.test`, `rpc.live`
@@ -24,7 +24,7 @@ Proof of phone is a smart oracle developed for the Ethereum blockchain to serve 
 config.json with placeholders
 ```
 {
-    "environment": "live/dev",
+    "environment": "live/test",
     "globalToken": "cba2c691-47df-41e7-bc97-a0818103ed14",
     "salt": "salt_for_message_with_hash_creating",
     "mongodbConnectionString": "mongodb://user:password@path_to_database",

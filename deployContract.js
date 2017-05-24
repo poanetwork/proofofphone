@@ -7,12 +7,7 @@ var web3;
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider);
 } else {
-  if (config.environment == "live")
-    web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc.live));
-  else if (config.environment == "dev")
-    web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc.test));
-  else
-    web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc.test));
+  web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc[config.environment]));
 }
 
 var contractABI = config.smartContract.abi;

@@ -3,20 +3,11 @@ var Web3 = require('web3');
 var web3;
 var config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 var contractABI = config.smartContract.abi;
-var contractAddress;
+var contractAddress = config.smartContract.contractAddress[config.environment];
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider);
 } else {
-  if (config.environment == "live") {
-  	web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc.live));
-  	contractAddress = config.smartContract.contractAddress.live;
-  } else if (config.environment == "dev") {
-  	web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc.test));
-  	contractAddress = config.smartContract.contractAddress.test;
-  } else {
-  	web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc.test));
-  	contractAddress = config.smartContract.contractAddress.test;
-  }
+  web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc[config.environment]));
 }
 
 sendEtherHome();
@@ -34,7 +25,6 @@ function sendEtherHome() {
 
 		attachToContract(function(err, contract) {
 			contract.sendEtherToOwner.sendTransaction({from: web3.eth.defaultAccount}, function(err, result) {
-				console.log("TEST");
 				if (err)
 					console.log(err);
 				else
