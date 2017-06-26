@@ -85,7 +85,7 @@
   line-height: 17px;
   width: 100%;
 }
-.inputContainer {
+div.inputContainer {
 	margin-bottom: 5px;
 	width: 540px;
 }
@@ -93,7 +93,7 @@
   margin-bottom: 10px;
   width: 400;
 }
-.POPInput {
+input.POPInput {
   font-family: 'Open Sans', sans-serif;
 	height: 56px;
 	width: 400px;
@@ -103,7 +103,7 @@
 	padding-left: 50px;
 	margin-right: 20px;
 }
-.POPInput:focus {
+input.POPInput:focus {
   outline: none;
   /*outline-color: rgb(87,196,223);
   outline-width: 2px;*/
@@ -111,22 +111,22 @@
   padding-left: 48px;
   border: 2px solid rgb(87,196,223) !important;
 }
-.POPInput.POPInputPhone {
+input.POPInput.POPInputPhone {
 	background: white url("/img/inputPhone.png") no-repeat left 15px center;
 }
-.POPInput.POPInputSMS {
+input.POPInput.POPInputSMS {
 	background: white url("/img/inputSMS.png") no-repeat left 15px center;
 }
-.POPInput.POPInputWallet {
+input.POPInput.POPInputWallet {
 	background: white url("/img/inputWallet.png") no-repeat left 15px center;
 }
-.POPInput.POPInputPhone:focus {
+input.POPInput.POPInputPhone:focus {
   background: white url("/img/inputPhone.png") no-repeat left 13px center;
 }
-.POPInput.POPInputSMS:focus {
+input.POPInput.POPInputSMS:focus {
   background: white url("/img/inputSMS.png") no-repeat left 13px center;
 }
-.POPInput.POPInputWallet:focus {
+input.POPInput.POPInputWallet:focus {
   background: white url("/img/inputWallet.png") no-repeat left 13px center;
 }
 .POPTitle2 {
@@ -220,14 +220,14 @@
 #step3CopyTable {
   display: inline-block;
 }
-.copyTable {
+table.copyTable {
   border: none;
   font-size: 14px;
   font-weight: 600;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.copyTable.nomargin {
+table.copyTable.nomargin {
   margin-top: 0px;
   margin-bottom: 0px;
 }
@@ -257,7 +257,7 @@
   transition: .2s ease-out;
   background: rgb(115, 196, 217) url("/img/copy.png") no-repeat center center !important;
 }
-.copyTableCellWalletValue1 {
+td.copyTableCellWalletValue1 {
   background: rgb(156,224,236);
   color: rgb(48,142,162);
   /*padding: 15px;*/
