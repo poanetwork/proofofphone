@@ -1,44 +1,50 @@
-contract PhoneToAddress {
+pragma solidity ^0.4.11;
+
+contract ProofOfPhone {
         address owner;
-        bytes dataEmpty;
-        struct PhonePayment {
+        struct Data {
             uint phone;
-            uint payment;
-            bytes data;
+            address addr;
         }
-        mapping(address => PhonePayment) addresses;
-        mapping(uint => address) public phones;
-        function PhoneToAddress() {
+        mapping(address => uint) public addressPhonePair;
+        mapping(uint => address) public phoneAddressPair;
+        mapping(bytes32 => Data) private tokens;
+        
+        function ProofOfPhone() {
             owner = msg.sender;
         }
-        function newPhoneToAddr(address addr, uint phone) {
-                if (msg.sender != owner) return;
-                addresses[addr] = PhonePayment({phone: phone, payment: 0, data: dataEmpty});
-                phones[phone] = addr;
+        
+        function newToken(uint phone, bytes32 token) {
+            tokens[token] = Data({phone: phone, addr: msg.sender});
         }
-        function () {
-            addresses[msg.sender] = PhonePayment({phone: 0, payment: msg.value/100000000000000000, data: msg.data});
+        
+        function activatePair(bytes32 token) {
+            if (tokens[token].addr != msg.sender) throw;
+            phoneAddressPair[tokens[token].phone] = tokens[token].addr;
+            addressPhonePair[tokens[token].addr] = tokens[token].phone;
         }
-        function sendEtherToOwner() { 
-            if (msg.sender != owner) return;                 
-            owner.send(this.balance);
-        }
+
         function getPhoneByAddress(address addr) constant returns(uint) {
-            return addresses[addr].phone;
+            return addressPhonePair[addr];
         }
-        function getPaymentByAddress(address addr) constant returns(uint) {
-            return addresses[addr].payment;
+        
+        function getAddressByPhone(uint phone) constant returns(address) {
+            return phoneAddressPair[phone];
         }
-        function getPaymentDataByAddress(address addr) constant returns(bytes) {
-            return addresses[addr].data;
-        }
+        
         function hasPhone(address addr) constant returns(bool) {
-            if (addresses[addr].phone != 0) {
+            if (addressPhonePair[addr] != 0) {
                 return true;
             } else {
                 return false;
             }
         }
+        
+        function sendEtherToOwner() { 
+            if (msg.sender != owner) return;                 
+            owner.transfer(this.balance);
+        }
+        
         function kill() {
             if (msg.sender != owner) return;
             selfdestruct(owner);   
