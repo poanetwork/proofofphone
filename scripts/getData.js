@@ -2,21 +2,14 @@ var fs = require('fs');
 var Web3 = require('web3');
 var web3;
 var config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+
 var contractABI = config.smartContract.abi;
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider);
 } else {
-  web3 = new Web3(new Web3.providers.HttpProvider(config.smartContract.rpc[config.environment]));
+  web3 = new Web3(new Web3.providers.HttpProvider(config.Ethereum[config.environment].rpc));
 }
-
-var contractAddress;
-if (config.environment == "live") {
-	contractAddress = config.smartContract.contractAddress.live;
-} else if (config.environment == "dev") {
-	contractAddress = config.smartContract.contractAddress.test;
-} else {
-	contractAddress = config.smartContract.contractAddress.test;
-}
+var contractAddress = config.smartContract.contractAddress[config.environment];
 
 var wallet = "";
 var phone = "";
@@ -30,7 +23,7 @@ function getData() {
 		console.log('{code: 200, title: "Error", message: "check RPC"}');
 	} else {
 		console.log(web3.eth.accounts);
-		web3.eth.defaultAccount = web3.eth.accounts[1];
+		web3.eth.defaultAccount = web3.eth.accounts[0];
 		console.log("web3.eth.defaultAccount:");
 		console.log(web3.eth.defaultAccount);
 
@@ -64,8 +57,7 @@ function getData() {
 				console.log("getAddressByPhone:");
 				console.log("phone: " + phone);
 				console.log("address: " + val);
-		});
-
+			});
 		});
 	}
 }
@@ -73,11 +65,11 @@ function getData() {
 function attachToContract(cb) {
 	if(!web3.isConnected()) {
 		if (cb) {
-				cb({code: 200, title: "Error", message: "check RPC"}, null);
-			}
+			cb({code: 200, title: "Error", message: "check RPC"}, null);
+		}
 	} else {
 		console.log(web3.eth.accounts);
-		web3.eth.defaultAccount = web3.eth.accounts[1];
+		web3.eth.defaultAccount = web3.eth.accounts[0];
 		console.log("web3.eth.defaultAccount:");
 		console.log(web3.eth.defaultAccount);
 		
