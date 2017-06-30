@@ -96,7 +96,7 @@ div.inputContainer {
 input.POPInput {
   font-family: 'Open Sans', sans-serif;
 	height: 56px;
-	width: 400px;
+	width: 340px;
 	border: none;
 	font-size: 14px;
 	border-radius: 5px;
@@ -109,6 +109,8 @@ input.POPInput:focus {
   outline-width: 2px;*/
   /*box-shadow: 0 0 0 1pt rgb(87,196,223);*/
   padding-left: 48px;
+  width: 338px;
+  height: 52px;
   border: 2px solid rgb(87,196,223) !important;
 }
 input.POPInput.POPInputPhone {

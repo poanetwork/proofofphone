@@ -1,27 +1,23 @@
-function getAddressByPhone(phone, changeStepNumber, cb) {
-	$.post("/getAddressByPhone", {
-		"globalToken": "cba2c691-47df-41e7-bc97-a0818103ed14",
-		"phone": phone
-	}, function( data ) {
-		cb();
-
-		if (data.success) {
-			if (data.success.addr != "0x0000000000000000000000000000000000000000") {
-				POPInputWallet.val(data.success.addr);
-				changeStepNumber(null, 4);
-			} else {
-				swal({   
-					title: "Warning",   
-					text: "This phone wasn't set for any wallet yet",   
-					type: "warning"
-				});
+function getAddressByPhone(web3, config, sender, phoneNumber, cb) {
+	attachToContract(web3, config, function(err, contract) {
+		getAddressByPhoneCall(web3, contract, sender, phoneNumber, function(err, addr) {
+			if (err) {
+				console.log("error: " + err);
+				cb(err);
+				return;
 			}
-		} else {
-			swal({   
-				title: "Error",   
-				text: data.error.message,   
-				type: "error"
-			});
-		}
+			console.log("getAddressByPhoneCall:");
+			console.log("addr: " + addr);
+			cb(null, addr);
+		});
+
+	});
+}
+
+function getAddressByPhoneCall(web3, contract, sender, phoneNumber, cb) {
+	if (!web3.isConnected()) cb({code: 500, title: "Error", message: "check RPC"}, null);
+
+	contract.getAddressByPhone.call(phoneNumber, {from: sender}, function(err, result) {
+		cb(err, result);
 	});
 }

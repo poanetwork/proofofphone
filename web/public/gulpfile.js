@@ -20,7 +20,7 @@ gulp.task('javascript', function() {
     ], {base: '.'}))
     .pipe(include())
     .pipe(concat('application.js'))
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(gulp.dest('javascripts'));
 });
 
