@@ -21,7 +21,7 @@ module.exports = function (app) {
 		twilioClient.messages.create({
 		    body: code,
 		    to: "+" + to,
-		    from: app.config.sendSMS.twilio.phoneNumberLive
+		    from: app.config.sendSMS.twilio[app.config.environment].phoneNumber
 		}, function(err, message) {
 			if (err) {
 				console.log(err);

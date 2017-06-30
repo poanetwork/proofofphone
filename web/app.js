@@ -10,7 +10,7 @@ var Web3 = require('web3');
 
 var config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
-var twilioClient = twilio(config.sendSMS.twilio.accountSIDLive, config.sendSMS.twilio.authTokenLive);
+var twilioClient = twilio(config.sendSMS.twilio[config.environment].accountSID, config.sendSMS.twilio.[config.environment].authToken);
 var MongoClient = mongodb.MongoClient;
 
 var web3;
