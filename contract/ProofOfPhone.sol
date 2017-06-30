@@ -1,21 +1,16 @@
 pragma solidity ^0.4.11;
 
 contract ProofOfPhone {
-        address owner;
-        struct Data {
+        struct PhoneAddr {
             uint phone;
             address addr;
         }
         mapping(address => uint) public addressPhonePair;
         mapping(uint => address) public phoneAddressPair;
-        mapping(bytes32 => Data) private tokens;
-        
-        function ProofOfPhone() {
-            owner = msg.sender;
-        }
+        mapping(bytes32 => PhoneAddr) private tokens;
         
         function newToken(uint phone, bytes32 token) {
-            tokens[token] = Data({phone: phone, addr: msg.sender});
+            tokens[token] = PhoneAddr({phone: phone, addr: msg.sender});
         }
         
         function activatePair(bytes32 token) {
@@ -38,15 +33,5 @@ contract ProofOfPhone {
             } else {
                 return false;
             }
-        }
-        
-        function sendEtherToOwner() { 
-            if (msg.sender != owner) return;                 
-            owner.transfer(this.balance);
-        }
-        
-        function kill() {
-            if (msg.sender != owner) return;
-            selfdestruct(owner);   
         }
 }
