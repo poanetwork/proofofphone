@@ -7,13 +7,12 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "~4.13.x",
-    "twilio": "~2.9.x",
-    "mongodb": "~2.1.x",
     "body-parser": "^1.12.4",
-    "fs": "latest",
-    "web3": "latest",
-    "pug": "latest"
+    "express": "~4.13.x",
+    "mongodb": "~2.1.x",
+    "pug": "^2.0.0-rc.2",
+    "twilio": "~2.9.x",
+    "web3": "^0.19.1"
   },
   "engines": {
     "node": "5.10.1"

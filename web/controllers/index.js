@@ -13,7 +13,7 @@ module.exports = function (app) {
 	app.post('/sendCodeBySMS', function(request, response) {
 		console.log(request.body);
 		var globalToken = request.body.globalToken;
-		if (globalToken != app.config.globalToken) return generateError(response, 401, "Unauthorized", "Wrong app token");
+		if (globalToken != "cba2c691-47df-41e7-bc97-a0818103ed14") return generateError(response, 401, "Unauthorized", "Wrong app token");
 
 		var to = request.body.to;
 		var code = randomInt(100000,1000000);
