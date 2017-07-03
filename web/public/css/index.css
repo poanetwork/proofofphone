@@ -216,9 +216,6 @@ input.POPInput.POPInputWallet:focus {
 .shareButton:focus {
   background: rgb(40,201,122) url("/img/shareIcon.png") no-repeat left center;
 }
-.shareButton.zeroclipboard-is-hover {
-  background: rgb(40,201,122) url("/img/shareIcon.png") no-repeat left center;
-}
 #step3CopyTable {
   display: inline-block;
 }
@@ -242,10 +239,6 @@ table.copyTable.nomargin {
   width: 42px;
   height: 40px;
 }
-.copyTableCellCopyButton.zeroclipboard-is-hover {
-  transition: .2s ease-out;
-  background: rgb(115, 196, 217) url("/img/copy.png") no-repeat center center !important;
-}
 .copyTableCellCopyButton2 {
   transition: .2s ease-out;
   background: rgb(80,182,207) url("/img/copy.png") no-repeat center center;
@@ -254,10 +247,6 @@ table.copyTable.nomargin {
   cursor: pointer;
   width: 42px;
   height: 40px;
-}
-.copyTableCellCopyButton2.zeroclipboard-is-hover {
-  transition: .2s ease-out;
-  background: rgb(115, 196, 217) url("/img/copy.png") no-repeat center center !important;
 }
 td.copyTableCellWalletValue1 {
   background: rgb(156,224,236);

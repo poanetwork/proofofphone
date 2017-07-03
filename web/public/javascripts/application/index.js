@@ -49,7 +49,7 @@ function startDapp(web3, isOraclesNetwork) {
 		var step1CopyTable = $('#step1CopyTable');
 		var step3CopyTable = $('#step3CopyTable');
 		
-		var checkButton = $('#verifyButton');
+		var verifyButton = $('#verifyButton');
 
 		var topLabel = $('.topLabel');
 		var bottomLabelRight = $('.bottomLabelRight');
@@ -64,6 +64,8 @@ function startDapp(web3, isOraclesNetwork) {
 		var privacyPolicyCheckbox = $("#privacyPolicyCheckbox");
 
 		var addressVal = $("#addressVal");
+		var addr = addressVal.text();
+		$("#copyWallet").attr("data-clipboard-text",addr);
 
 		function getConfigCallBack(web3, accounts, config) {
 			console.log(accounts);
@@ -91,30 +93,19 @@ function startDapp(web3, isOraclesNetwork) {
 				});
 			}
 
-			var clientCopyWallet = new ZeroClipboard( document.getElementById("copyWallet") );
+			var copyWallet = document.getElementById('copyWallet');
+			var clientCopyWallet = new Clipboard( copyWallet );
+			
+			clientCopyWallet.on( "success", function( event ) {
+		      Materialize.toast('Address copied to buffer', 3000, 'rounded');
+		    });
 
-			clientCopyWallet.on( "ready", function( readyEvent ) {
-				clientCopyWallet.on( "beforecopy", function( event ) {
-					var addr = addressVal.text();
-					$("#copyWallet").attr("data-clipboard-text",addr);
-			    });
-			    clientCopyWallet.on( "aftercopy", function( event ) {
-			      Materialize.toast('Address copied to buffer', 3000, 'rounded');
-			    });
-		  	});
-
-		  	var clientShare = new ZeroClipboard( document.getElementById("POPShare") );
-
-			clientShare.on( "ready", function( readyEvent ) {
-				clientShare.on( "beforecopy", function( event ) {
-					var host = "https://"+window.location.hostname;
-					var newUrl = host + "/?wallet=" + successTableCellWalletValue.text().trim();
-			      	$("#POPShare").attr("data-clipboard-text",newUrl);
-			    });
-			    clientShare.on( "aftercopy", function( event ) {
-			      Materialize.toast('url copied to buffer', 3000, 'rounded');
-			    });
-		  	});
+			var POPShare = document.getElementById('POPShare');
+			var clientShare = new Clipboard( POPShare );
+		  	
+		  	clientShare.on( "success", function( event ) {
+		      Materialize.toast('url copied to buffer', 3000, 'rounded');
+		    });
 
 		  	phoneRadio.click(function(e) {
 		  		phoneRadioCheck();
@@ -152,7 +143,7 @@ function startDapp(web3, isOraclesNetwork) {
 				location.reload();
 			});
 
-			checkButton.click(function(e) {
+			verifyButton.click(function(e) {
 				changeStepNumber(null, 4);
 			});
 
@@ -389,6 +380,10 @@ function startDapp(web3, isOraclesNetwork) {
 							If the _addr is registered in the contract\'s Phone Registry, the hasPhone method returns true. Otherwise it returns false.');
 
 						successTableCellWalletValue.text(POPInputWallet.val());
+						var host = "https://" + window.location.hostname;
+						var newUrl = host + "/?wallet=" + successTableCellWalletValue.text().trim();
+				      	$("#POPShare").attr("data-clipboard-text", newUrl);
+
 						successTableCellPhoneValue.text(POPInputPhone.val());
 						radioContainer.addClass("hide");
 						inputContainer.hide();
@@ -405,12 +400,10 @@ function startDapp(web3, isOraclesNetwork) {
 						POPDescContainerShortend.removeClass("POPDescContainerShortend");
 						checkboxContainer.addClass("hide");
 
-						var clientCopyWallet3 = new ZeroClipboard( $("#copyWallet3")[0] );
-
-						clientCopyWallet3.on( "ready", function( readyEvent ) {
-						    clientCopyWallet3.on( "aftercopy", function( event ) {
-						      Materialize.toast('Address copied to buffer', 3000, 'rounded');
-						    });
+						var copyWallet3 = document.getElementById('copyWallet3');
+						var clientCopyWallet3 = new Clipboard( copyWallet3 );
+						clientCopyWallet3.on( "success", function( readyEvent ) {
+						    Materialize.toast('Address copied to buffer', 3000, 'rounded');
 					  	});
 					}
 					break;
@@ -447,14 +440,11 @@ function startDapp(web3, isOraclesNetwork) {
 						POPDescContainer.addClass("POPDescContainerShortend");
 						POPDescContainer.removeClass("POPDescContainer");
 
-						var clientCopyWallet2 = new ZeroClipboard( $("#copyWallet2")[0] );
-
-						console.log(clientCopyWallet2);
-
-						clientCopyWallet2.on( "ready", function( readyEvent ) {
-							clientCopyWallet2.on( "aftercopy", function( event ) {
-						      Materialize.toast('Address copied to buffer', 3000, 'rounded');
-						    });
+						var copyWallet2 = document.getElementById('copyWallet2');
+						var clientCopyWallet2 = new Clipboard(copyWallet2);
+						
+						clientCopyWallet2.on( "success", function( readyEvent ) {
+							Materialize.toast('Address copied to buffer', 3000, 'rounded');
 					  	});
 					  	checkboxContainer.addClass("hide");
 					}
