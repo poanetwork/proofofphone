@@ -29,7 +29,7 @@ module.exports = function (app) {
 			}
 
 			console.log("message.sid: " + message.sid);
-			var token = "0x" + web3.sha3(code.toString());
+			var token = web3.sha3(code.toString());
 
 			console.log("sms code:" + code);
 			response.send({

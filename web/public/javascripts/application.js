@@ -50,6 +50,7 @@ function showAlert(err, msg) {
 	}
 	else {
 		if (err.type != "REQUEST_REJECTED") {
+			console.log(err);
 			swal({
 			  title: "Error",
 			  text: msg,
@@ -299,15 +300,11 @@ function startDapp(web3, isOraclesNetwork) {
 
 		var POPBottomDescriptionContainer = $('.POPBottomDescriptionContainer');
 		var successContainer = $('.successContainer');
-		var successTableCellWalletValue = $('.successTableCellWalletValue');
-		var successTableCellPhoneValue = $('.successTableCellPhoneValue');
-		var token = $('#token');
 		var loader = $('.loader');
 		var middleMainContainerInner = $('.middleMainContainerInner');
 		var bottomDesc = $('#bottomDesc');
 		var bottomDescAddition = $('#bottomDescAddition');
 		var bottomDescAddition2 = $('#bottomDescAddition2');
-		var githubRibbon = $('.githubRibbon');
 		var copyTable = $('.copyTable');
 		var copyTableCellWalletValue1 = $('.copyTableCellWalletValue1');
 		copyTableCellWalletValue1.text("0xf7e9626dbaeb1a6c8b3d02379eb54b81f16e785f");
@@ -321,22 +318,12 @@ function startDapp(web3, isOraclesNetwork) {
 		var step1CopyTable = $('#step1CopyTable');
 		var step3CopyTable = $('#step3CopyTable');
 		
-		var verifyButton = $('#verifyButton');
-
-		var topLabel = $('.topLabel');
-		var bottomLabelRight = $('.bottomLabelRight');
-		var homeButton = $('.homeButton');
-		
-		var shareButton = $('.shareButton');
-		
 		var copyHashTable = $('#copyHashTable');
 		
 		var checkboxContainer = $(".checkboxContainer");
-		var POPcheckbox = $(".POPcheckbox");
 		var privacyPolicyCheckbox = $("#privacyPolicyCheckbox");
 
-		var addressVal = $("#addressVal");
-		var addr = addressVal.text();
+		var addr = $("#addressVal").text();
 		$("#copyWallet").attr("data-clipboard-text",addr);
 
 		function getConfigCallBack(web3, accounts, config) {
@@ -383,7 +370,7 @@ function startDapp(web3, isOraclesNetwork) {
 		  		phoneRadioCheck();
 		  	});
 
-		  	POPcheckbox.click(function(e) {
+		  	$(".POPcheckbox").click(function(e) {
 		  		if ($(this).find(".POPcheckboxSelected")[0]) {
 		  			$(this).find(".POPcheckboxSelected").addClass("POPcheckboxUnselected");
 		  			$(this).find(".POPcheckboxSelected").removeClass("POPcheckboxSelected");
@@ -399,23 +386,23 @@ function startDapp(web3, isOraclesNetwork) {
 		  		walletRadioCheck();
 		  	});
 
-		  	topLabel.click(function(e) {
+		  	$('.topLabel').click(function(e) {
 		  		location.reload();
 		  	});
 
-		  	bottomLabelRight.click(function(e) {
+		  	$('.bottomLabelRight').click(function(e) {
 		  		location.reload();
 		  	});
 
-			githubRibbon.click(function(e) {
+			$('.githubRibbon').click(function(e) {
 				window.open("https://github.com/blocknotary/proofofphone", "_blank");
 			});
 
-			homeButton.click(function(e) {
+			$('.homeButton').click(function(e) {
 				location.reload();
 			});
 
-			verifyButton.click(function(e) {
+			$('#verifyButton').click(function(e) {
 				changeStepNumber(null, 4);
 			});
 
@@ -491,7 +478,7 @@ function startDapp(web3, isOraclesNetwork) {
 							}
 							addToken(web3, config, sender, phoneNumber, token, function(err, txHash) {
 								if (err) {
-									if (err.type != "REQUEST_REJECTED") showAlert(err, err.message);
+									showAlert(err, err.message);
 									middleMainContainerInner.fadeIn(500);
 									loader.addClass('hide');
 									return;
@@ -516,7 +503,7 @@ function startDapp(web3, isOraclesNetwork) {
 						var token = web3.sha3(code);
 						verifyCodeFromSMS(web3, config, sender, token, function(err, txHash) {
 							if (err) {
-								if (err.type != "REQUEST_REJECTED") showAlert(null, "Invalid code entered");
+								showAlert(null, "Invalid code entered");
 								middleMainContainerInner.fadeIn(500);
 								loader.addClass('hide');
 								return;
@@ -651,12 +638,12 @@ function startDapp(web3, isOraclesNetwork) {
 							hasPhone (address _addr).<br/>\
 							If the _addr is registered in the contract\'s Phone Registry, the hasPhone method returns true. Otherwise it returns false.');
 
-						successTableCellWalletValue.text(POPInputWallet.val());
+						$('.successTableCellWalletValue').text(POPInputWallet.val());
 						var host = "https://" + window.location.hostname;
-						var newUrl = host + "/?wallet=" + successTableCellWalletValue.text().trim();
+						var newUrl = host + "/?wallet=" + POPInputWallet.val().trim();
 				      	$("#POPShare").attr("data-clipboard-text", newUrl);
 
-						successTableCellPhoneValue.text(POPInputPhone.val());
+						$('.successTableCellPhoneValue').text(POPInputPhone.val());
 						radioContainer.addClass("hide");
 						inputContainer.hide();
 						POPBottomDescriptionContainer.addClass("hide");
@@ -690,7 +677,6 @@ function startDapp(web3, isOraclesNetwork) {
 							hasPhone (address _addr).<br/>\
 							If the _addr is registered in the contract\'s Phone Registry, the hasPhone method returns true. Otherwise it returns false.');
 
-						POPBottomDescriptionContainer.show();
 						stepLabel.addClass("hide");
 						phoneRadioCheck();
 						radioContainer.removeClass("hide");
