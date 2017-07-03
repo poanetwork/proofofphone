@@ -4,7 +4,7 @@ function getWeb3(callback) {
     // no web3, use fallback
     console.error("Please use a web3 browser");
     var msgNotEthereum = "You aren't connected to Oracles Network. Please, switch on Oracles plugin and refresh the page. Check Oracles network <a href='https://github.com/oraclesorg/oracles-wiki' target='blank'>wiki</a> for more info.";
-    swal("Warning", msgNotEthereum, "warning");
+    showAlert(null, msgNotEthereum, "warning");
     callback(myWeb3, false);
   } else {
     // window.web3 == web3 most of the time. Don't override the provided,

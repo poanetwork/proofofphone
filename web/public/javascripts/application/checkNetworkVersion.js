@@ -8,17 +8,17 @@ function checkNetworkVersion(web3, cb) {
     switch (netId) {
       case "1": {
         console.log('This is mainnet');
-        swal("Warning", msgNotOracles, "warning"); 
+        showAlert(null, msgNotOracles, "warning");
         cb(false);
       } break;
       case "2": {
         console.log('This is the deprecated Morden test network.');
-        swal("Warning", msgNotOracles, "warning");
+        showAlert(null, msgNotOracles, "warning");
         cb(false);
       } break;
       case "3": {
         console.log('This is the ropsten test network.');
-        swal("Warning", msgNotOracles, "warning");
+        showAlert(null, msgNotOracles, "warning");
         cb(false);
       }  break;
        case "12648430": {
@@ -27,7 +27,7 @@ function checkNetworkVersion(web3, cb) {
       }  break;
       default: {
         console.log('This is an unknown network.');
-        swal("Warning", msgNotOracles, "warning");
+        showAlert(null, msgNotOracles, "warning");
         cb(false);
       } break;
     }

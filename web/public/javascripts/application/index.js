@@ -59,7 +59,11 @@ function startDapp(web3, isOraclesNetwork) {
 				sender = accounts[0];
 				POPInputWallet.val(sender);
 			} else {
-				swal("Warning", "You haven't chosen any account in Oracles plugin. Please, choose your account in Oracles plugin and reload the page. Check Oracles network <a href='https://github.com/oraclesorg/oracles-wiki' target='blank'>wiki</a> for more info.", "warning");
+				showAlert(
+					null,
+					"You haven't chosen any account in Oracles plugin. Please, choose your account in Oracles plugin and reload the page. Check Oracles network <a href='https://github.com/oraclesorg/oracles-wiki' target='blank'>wiki</a> for more info.",
+					"warning"
+				);
 			}
 
 			var wallet = QueryString.wallet;
@@ -215,11 +219,7 @@ function startDapp(web3, isOraclesNetwork) {
 										changeStepNumber(+1, null);
 										middleMainContainerInner.fadeIn(500);
 										loader.addClass('hide');
-										swal({   
-											title: "Success",   
-											text: "Code successfully sent by SMS",   
-											type: "success"
-										});
+										showAlert(null, "Code successfully sent by SMS", "success");
 									});
 								}
 							});
@@ -254,13 +254,7 @@ function startDapp(web3, isOraclesNetwork) {
 									if (phone != 0) {
 										POPInputPhone.val(phone);
 										changeStepNumber(null, 3);
-									} else {
-										swal({   
-											title: "Warning",   
-											text: "Phone wasn't set for this wallet yet",   
-											type: "warning"
-										});
-									}
+									} else showAlert(null, "Phone wasn't set for this wallet yet", "warning");
 									middleMainContainerInner.fadeIn(500);
 									loader.addClass('hide');
 								});
@@ -270,13 +264,7 @@ function startDapp(web3, isOraclesNetwork) {
 									if (addr != "0x0000000000000000000000000000000000000000" && addr != "0x") {
 										POPInputWallet.val(addr);
 										changeStepNumber(null, 3);
-									} else {
-										swal({   
-											title: "Warning",   
-											text: "This phone wasn't set for any wallet yet",   
-											type: "warning"
-										});
-									}
+									} else showAlert(null, "This phone wasn't set for any wallet yet", "warning");
 									middleMainContainerInner.fadeIn(500);
 									loader.addClass('hide');
 								});
