@@ -40,12 +40,11 @@ function startDapp(web3, isOraclesNetwork) {
 		var POPDescContainerShortend = $('.POPDescContainerShortend');
 
 		var step1CopyTable = $('#step1CopyTable');
-		var step3CopyTable = $('#step3CopyTable');
 		
 		var addr = $("#addressVal").text();
-		$("#copyWallet").attr("data-clipboard-text", addr);
-
+		
 		function getConfigCallBack(web3, accounts, config) {
+
 			console.log(accounts);
 			if (accounts.length == 1) {
 				sender = accounts[0];
@@ -69,7 +68,6 @@ function startDapp(web3, isOraclesNetwork) {
 				});
 			}
 
-			buildCopyWalletControl("copyWallet");
 			buildCopyURLControl("POPShare");
 
 		  	phoneRadio.click(function(e) {
@@ -147,8 +145,8 @@ function startDapp(web3, isOraclesNetwork) {
 			loader.removeClass('hide');
 			switch(curStepNum) {
 				case 1: {
-					var phoneNumber = parseInt(visibleInput.val());
-					sendCodeBySMS(phoneNumber, sendCodeBySMSCallback);
+					var phoneNumber = visibleInput.val();
+					sendCodeBySMS(phoneNumber, sendCodeBySMSCallback, config, sender);
 				} break;
 				case 2: {
 					var code = parseInt(POPInputSMS.val());
@@ -196,7 +194,6 @@ function startDapp(web3, isOraclesNetwork) {
 						POPInputSMS.focus();
 						POPInputWallet.addClass('hide');
 						step1CopyTable.hide();
-						step3CopyTable.addClass("hide");
 						bottomDescAddition.addClass("hide");
 						successContainer.addClass("hide");
 						POPTitleContainerShortend.addClass("POPTitleContainer");
@@ -221,15 +218,12 @@ function startDapp(web3, isOraclesNetwork) {
 						radioContainer.addClass("hide");
 						inputContainer.hide();
 						step1CopyTable.hide();
-						step3CopyTable.addClass("hide");
 						bottomDescAddition.addClass("hide");
 						successContainer.removeClass("hide");
 						POPTitleContainerShortend.addClass("POPTitleContainer");
 						POPTitleContainerShortend.removeClass("POPTitleContainerShortend");
 						POPDescContainerShortend.addClass("POPDescContainer");
 						POPDescContainerShortend.removeClass("POPDescContainerShortend");
-
-						buildCopyWalletControl("copyWallet3");
 					}
 					break;
 				case 4:
@@ -247,7 +241,6 @@ function startDapp(web3, isOraclesNetwork) {
 						POPInputSMS.addClass('hide');
 						POPInputWallet.addClass('hide');
 						step1CopyTable.hide();
-						step3CopyTable.addClass("hide");
 						bottomDescAddition.addClass("hide");
 						bottomDescAddition2.addClass("hide");
 						successContainer.addClass("hide");
@@ -256,7 +249,7 @@ function startDapp(web3, isOraclesNetwork) {
 						POPDescContainer.addClass("POPDescContainerShortend");
 						POPDescContainer.removeClass("POPDescContainer");
 
-						buildCopyWalletControl("copyWallet2");
+						buildCopyWalletControl("copyWallet3");
 					}
 					break;
 				default:
@@ -265,7 +258,6 @@ function startDapp(web3, isOraclesNetwork) {
 						stepLabel.removeClass("hide");
 						POPBottomDescriptionContainer.show();
 						step1CopyTable.hide();
-						step3CopyTable.addClass("hide");
 						bottomDescAddition.addClass("hide");
 						bottomDescAddition2.addClass("hide");
 						successContainer.addClass("hide");
@@ -281,7 +273,7 @@ function startDapp(web3, isOraclesNetwork) {
 	  		});
 		}
 
-		function sendCodeBySMSCallback(err, token) {
+		function sendCodeBySMSCallback(err, token, config, sender, phoneNumber) {
 			if (err) {
 				middleMainContainerInner.fadeIn(500);
 				loader.addClass('hide');
@@ -344,10 +336,13 @@ function startDapp(web3, isOraclesNetwork) {
 
 		function buildCopyWalletControl(id) {
 			var copyWallet = document.getElementById(id);
-			var clientCopyWallet = new Clipboard(copyWallet);
-			clientCopyWallet.on( "success", function( readyEvent ) {
-				Materialize.toast(addressCopiedToBufferText, 3000, 'rounded');
-		  	});
+			if (copyWallet) {
+				var clientCopyWallet = new Clipboard("#" + id);
+				console.log(clientCopyWallet);
+				clientCopyWallet.on( "success", function( readyEvent ) {
+					Materialize.toast(addressCopiedToBufferText, 3000, 'rounded');
+			  	});
+			};
 		}
 
 		function buildCopyURLControl(id) {

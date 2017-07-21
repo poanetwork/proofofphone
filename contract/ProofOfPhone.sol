@@ -13,7 +13,7 @@ contract ProofOfPhone {
             tokens[token] = PhoneAddr({phone: phone, addr: msg.sender});
         }
         
-        function activatePair(uint code) {
+        function activatePair(string code) {
             require(tokens[sha3(code)].addr == msg.sender);
             phoneAddressPair[tokens[sha3(code)].phone] = tokens[sha3(code)].addr;
             addressPhonePair[tokens[sha3(code)].addr] = tokens[sha3(code)].phone;

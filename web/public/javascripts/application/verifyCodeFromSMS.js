@@ -1,12 +1,12 @@
-function verifyCodeFromSMS(web3, config, sender, token, cb) {
-	activatePair(web3, config, sender, token, function(err, txHash) {
+function verifyCodeFromSMS(web3, config, sender, code, cb) {
+	activatePair(web3, config, sender, code, function(err, txHash) {
 		cb(err, txHash);
 	});
 }
 
-function activatePair(web3, config, sender, token, cb) {
+function activatePair(web3, config, sender, code, cb) {
 	attachToContract(web3, config, function(err, contract) {
-		activatePairTX(web3, contract, sender, token, function(err, txHash) {
+		activatePairTX(web3, contract, sender, code, function(err, txHash) {
 			//console.log("activatePairTX:");
 			//console.log("result: " + txHash);
 			cb(err, txHash);
@@ -15,10 +15,10 @@ function activatePair(web3, config, sender, token, cb) {
 	});
 }
 
-function activatePairTX(web3, contract, sender, token, cb) {
+function activatePairTX(web3, contract, sender, code, cb) {
 	if (!web3.isConnected()) cb({code: 500, title: "Error", message: "check RPC"}, null);
 
-	contract.activatePair.sendTransaction(token, {gas: 800000, from: sender}, function(err, result) {
+	contract.activatePair.sendTransaction(code.toString(), {gas: 100000, from: sender}, function(err, result) {
 		cb(err, result);
 	});
 }
