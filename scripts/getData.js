@@ -3,13 +3,13 @@ var Web3 = require('web3');
 var web3;
 var config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
-var contractABI = config.smartContract.abi;
+var contractABI = config.Ethereum.contracts.ProofOfPhone.abi;
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider);
 } else {
   web3 = new Web3(new Web3.providers.HttpProvider(config.Ethereum[config.environment].rpc));
 }
-var contractAddress = config.smartContract.contractAddress[config.environment];
+var contractAddress = config.Ethereum[config.environment].contractAddress;
 
 var wallet = "";
 var phone = "";
