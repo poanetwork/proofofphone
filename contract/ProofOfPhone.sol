@@ -1,4 +1,4 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.13;
 
 contract ProofOfPhone {
         struct PhoneAddr {
@@ -13,10 +13,10 @@ contract ProofOfPhone {
             tokens[token] = PhoneAddr({phone: phone, addr: msg.sender});
         }
         
-        function activatePair(bytes32 token) {
-            if (tokens[token].addr != msg.sender) throw;
-            phoneAddressPair[tokens[token].phone] = tokens[token].addr;
-            addressPhonePair[tokens[token].addr] = tokens[token].phone;
+        function activatePair(uint code) {
+            require(tokens[sha3(code)].addr == msg.sender);
+            phoneAddressPair[tokens[sha3(code)].phone] = tokens[sha3(code)].addr;
+            addressPhonePair[tokens[sha3(code)].addr] = tokens[sha3(code)].phone;
         }
 
         function getPhoneByAddress(address addr) constant returns(uint) {

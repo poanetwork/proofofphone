@@ -1,10 +1,12 @@
-//launches main application
+//launches main proofofphone application
 function startDapp(web3, isOraclesNetwork) {
 	console.log(web3);
 	var sender;
 	$(function() {
 		if (!isOraclesNetwork) return;
+		//gets accounts, chosen at Oracles plugin
 		getAccounts(function(accounts) {
+			//gets Ethereum config data
 			getConfig(function(config) {
 				getConfigCallBack(web3, accounts, config);	
 			});
@@ -32,11 +34,6 @@ function startDapp(web3, isOraclesNetwork) {
 		var bottomDesc = $('#bottomDesc');
 		var bottomDescAddition = $('#bottomDescAddition');
 		var bottomDescAddition2 = $('#bottomDescAddition2');
-		var copyTable = $('.copyTable');
-		var copyTableCellWalletValue1 = $('.copyTableCellWalletValue1');
-		copyTableCellWalletValue1.text("0xf7e9626dbaeb1a6c8b3d02379eb54b81f16e785f");
-		var copyTableCellWalletValue2 = $('.copyTableCellWalletValue2');
-
 		var POPTitleContainer = $('.POPTitleContainer');
 		var POPTitleContainerShortend = $('.POPTitleContainerShortend');
 		var POPDescContainer = $('.POPDescContainer');
@@ -45,26 +42,15 @@ function startDapp(web3, isOraclesNetwork) {
 		var step1CopyTable = $('#step1CopyTable');
 		var step3CopyTable = $('#step3CopyTable');
 		
-		var copyHashTable = $('#copyHashTable');
-		
-		var checkboxContainer = $(".checkboxContainer");
-		var privacyPolicyCheckbox = $("#privacyPolicyCheckbox");
-
 		var addr = $("#addressVal").text();
-		$("#copyWallet").attr("data-clipboard-text",addr);
+		$("#copyWallet").attr("data-clipboard-text", addr);
 
 		function getConfigCallBack(web3, accounts, config) {
 			console.log(accounts);
 			if (accounts.length == 1) {
 				sender = accounts[0];
 				POPInputWallet.val(sender);
-			} else {
-				showAlert(
-					null,
-					"You haven't chosen any account in Oracles plugin. Please, choose your account in Oracles plugin and reload the page. Check Oracles network <a href='https://github.com/oraclesorg/oracles-wiki' target='blank'>wiki</a> for more info.",
-					"warning"
-				);
-			}
+			} else showAlert(null, chooseAccountAlertText, "warning");
 
 			var wallet = QueryString.wallet;
 			if (wallet) {
@@ -83,34 +69,11 @@ function startDapp(web3, isOraclesNetwork) {
 				});
 			}
 
-			var copyWallet = document.getElementById('copyWallet');
-			var clientCopyWallet = new Clipboard( copyWallet );
-			
-			clientCopyWallet.on( "success", function( event ) {
-		      Materialize.toast('Address copied to buffer', 3000, 'rounded');
-		    });
-
-			var POPShare = document.getElementById('POPShare');
-			var clientShare = new Clipboard( POPShare );
-		  	
-		  	clientShare.on( "success", function( event ) {
-		      Materialize.toast('url copied to buffer', 3000, 'rounded');
-		    });
+			buildCopyWalletControl("copyWallet");
+			buildCopyURLControl("POPShare");
 
 		  	phoneRadio.click(function(e) {
 		  		phoneRadioCheck();
-		  	});
-
-		  	$(".POPcheckbox").click(function(e) {
-		  		if ($(this).find(".POPcheckboxSelected")[0]) {
-		  			$(this).find(".POPcheckboxSelected").addClass("POPcheckboxUnselected");
-		  			$(this).find(".POPcheckboxSelected").removeClass("POPcheckboxSelected");
-		  			privacyPolicyCheckbox.prop( "checked", false );
-		  		} else {
-		  			$(this).find(".POPcheckboxUnselected").addClass("POPcheckboxSelected");
-		  			$(this).find(".POPcheckboxUnselected").removeClass("POPcheckboxUnselected");
-		  			privacyPolicyCheckbox.prop( "checked", true );
-		  		}
 		  	});
 
 		  	walletRadio.click(function(e) {
@@ -126,7 +89,7 @@ function startDapp(web3, isOraclesNetwork) {
 		  	});
 
 			$('.githubRibbon').click(function(e) {
-				window.open("https://github.com/blocknotary/proofofphone", "_blank");
+				window.open(githubURL, "_blank");
 			});
 
 			$('.homeButton').click(function(e) {
@@ -141,36 +104,21 @@ function startDapp(web3, isOraclesNetwork) {
 				submit(config, sender);
 			});
 
-			POPInputPhone.keypress(function (e) {
-			 var key = e.which;
-			 	if (key == 13) { // the enter key code
-			    	POPSubmit.click();
-			    	return false;  
-				}
-			});
+			POPInputPhone.keypress(inputKeyPressEvent);
+			POPInputSMS.keypress(inputKeyPressEvent);
+			POPInputWallet.keypress(inputKeyPressEvent);
+		}
 
-			POPInputSMS.keypress(function (e) {
-			 	var key = e.which;
-			 	if (key == 13) { // the enter key code
-			    	POPSubmit.click();
-			    	return false;  
-				}
-			});
-
-			POPInputWallet.keypress(function (e) {
-			 	var key = e.which;
-			 	if (key == 13) { // the enter key code
-			    	POPSubmit.click();
-			    	return false;  
-			  	}
-			});
+		function inputKeyPressEvent(e) {
+			var key = e.which;
+		 	if (key == 13) { // the enter key code
+		    	POPSubmit.click();
+		    	return false;  
+		  	}
 		}
 
 		function phoneRadioCheck() {
-	  		POPradios.each(function(e) {
-	  			$(this).find('.POPRadioInner').removeClass('POPradioSelected');
-	  			$(this).find('.POPRadioInner').addClass('POPradioUnselected');
-	  		});
+	  		unselectPOPRadios();
 	  		phoneRadio.find('.POPRadioInner').removeClass('POPradioUnselected');
 	  		phoneRadio.find('.POPRadioInner').addClass('POPradioSelected');
 	  		POPInputPhone.removeClass('hide');
@@ -180,10 +128,7 @@ function startDapp(web3, isOraclesNetwork) {
 	  	}
 
 	  	function walletRadioCheck() {
-	  		POPradios.each(function(e) {
-	  			$(this).find('.POPRadioInner').removeClass('POPradioSelected');
-	  			$(this).find('.POPRadioInner').addClass('POPradioUnselected');
-	  		});
+	  		unselectPOPRadios();
 	  		walletRadio.find('.POPRadioInner').removeClass('POPradioUnselected');
 	  		walletRadio.find('.POPRadioInner').addClass('POPradioSelected');
 	  		POPInputWallet.removeClass('hide');
@@ -195,90 +140,38 @@ function startDapp(web3, isOraclesNetwork) {
 	  	function submit(config, sender) {
 			var visibleInput = $('input:visible');
 			var curStepNum = parseInt(stepNum.val());
-			if (visibleInput.val() != "") {
-				middleMainContainerInner.fadeOut(500);
-				loader.removeClass('hide');
-				switch(curStepNum) {
-					case 1: {
-						var phoneNumber = parseInt(visibleInput.val());
-						sendCodeBySMS(phoneNumber, function(err, token) {
-							if (err) {
-								middleMainContainerInner.fadeIn(500);
-								loader.addClass('hide');
-								return showAlert(err, err.message);
-							}
-							addToken(web3, config, sender, phoneNumber, token, function(err, txHash) {
-								if (err) {
-									showAlert(err, err.message);
-									middleMainContainerInner.fadeIn(500);
-									loader.addClass('hide');
-									return;
-								}
-								if (txHash) {
-									getTxCallBack(txHash, function() {
-										changeStepNumber(+1, null);
-										middleMainContainerInner.fadeIn(500);
-										loader.addClass('hide');
-										showAlert(null, "Code successfully sent by SMS", "success");
-									});
-								}
-							});
-						});
-					} break;
-					case 2: {
-						var code = POPInputSMS.val();
-						var token = web3.sha3(code);
-						verifyCodeFromSMS(web3, config, sender, token, function(err, txHash) {
-							if (err) {
-								showAlert(null, "Invalid code entered");
-								middleMainContainerInner.fadeIn(500);
-								loader.addClass('hide');
-								return;
-							}
-							if (txHash) {
-								getTxCallBack(txHash, function() {
-									changeStepNumber(+1, null);
-									middleMainContainerInner.fadeIn(500);
-									loader.addClass('hide');
-								});
-							}
-						});
-					} break;
-					case 4:
-						{
-							var radioVal = $('input[name=radioCheck]:checked').val();
-							if (radioVal == "wallet") {
-								getPhoneByAddress(web3, config, sender, POPInputWallet.val(), function(err, phone) {
-									if (err) return showAlert(err, err.message);
-									console.log(phone);
-									if (phone != 0) {
-										POPInputPhone.val(phone);
-										changeStepNumber(null, 3);
-									} else showAlert(null, "Phone wasn't set for this wallet yet", "warning");
-									middleMainContainerInner.fadeIn(500);
-									loader.addClass('hide');
-								});
-							} else {
-								getAddressByPhone(web3, config, sender, POPInputPhone.val(), function(err, addr) {
-									if (err) return showAlert(err, err.message);
-									if (addr != "0x0000000000000000000000000000000000000000" && addr != "0x") {
-										POPInputWallet.val(addr);
-										changeStepNumber(null, 3);
-									} else showAlert(null, "This phone wasn't set for any wallet yet", "warning");
-									middleMainContainerInner.fadeIn(500);
-									loader.addClass('hide');
-								});
-							}
+
+			if (visibleInput.val() == "") return visibleInput.focus();
+
+			middleMainContainerInner.fadeOut(500);
+			loader.removeClass('hide');
+			switch(curStepNum) {
+				case 1: {
+					var phoneNumber = parseInt(visibleInput.val());
+					sendCodeBySMS(phoneNumber, sendCodeBySMSCallback);
+				} break;
+				case 2: {
+					var code = parseInt(POPInputSMS.val());
+					//var token = web3.sha3(code);
+					verifyCodeFromSMS(web3, config, sender, code, verifyCodeFromSMSCallback);
+				} break;
+				case 4:
+					{
+						var radioVal = $('input[name=radioCheck]:checked').val();
+						if (radioVal == "wallet") {
+							getPhoneByAddress(web3, config, sender, POPInputWallet.val(), getPhoneByAddressCallback);
+						} else {
+							getAddressByPhone(web3, config, sender, POPInputPhone.val(), getAddressByPhoneCallback);
 						}
-						break;
-					default:
-						{
-							middleMainContainerInner.fadeIn(500);
-							loader.addClass('hide');
-						}
-						break;
-				}
-			} else visibleInput.focus();
+					}
+					break;
+				default:
+					{
+						middleMainContainerInner.fadeIn(500);
+						loader.addClass('hide');
+					}
+					break;
+			}
 		}
 
 		function changeStepNumber(addition, absolute) {
@@ -290,36 +183,10 @@ function startDapp(web3, isOraclesNetwork) {
 
 			stepLabel.text("Step " + newStepNum);
 			switch(newStepNum) {
-				case 1:
-					{
-						stepTitle.text("Submit your phone number");
-						bottomDesc.text("Enter a phone number you'd like to join with your Ethereum address. We will send you an SMS. After verification, we will ask you to deposit  a service fee of 0.1 ether to a smart contract at the address");
-						stepLabel.removeClass("hide");
-						radioContainer.addClass("hide");
-						inputContainer.show();
-						POPBottomDescriptionContainer.show();
-						POPInputPhone.removeClass('hide');
-						POPInputPhone.focus();
-						POPInputSMS.addClass('hide');
-						POPInputWallet.addClass('hide');
-						POPBottomDescriptionContainer.removeClass("hide");
-						copyTable.show();
-						step1CopyTable.removeClass("hide");
-						step3CopyTable.addClass("hide");
-						bottomDescAddition.addClass("hide");
-						copyHashTable.addClass("hide");
-						successContainer.addClass("hide");
-						POPTitleContainerShortend.addClass("POPTitleContainer");
-						POPTitleContainerShortend.removeClass("POPTitleContainerShortend");
-						POPDescContainerShortend.addClass("POPDescContainer");
-						POPDescContainerShortend.removeClass("POPDescContainerShortend");
-						checkboxContainer.removeClass("hide");
-					}
-					break;
 				case 2:
 					{
-						stepTitle.text("Submit received code");
-						bottomDesc.text("Copy the code from the SMS to continue");
+						stepTitle.text(secondStepTitleText);
+						bottomDesc.text(secondStepTitleDescription);
 						stepLabel.removeClass("hide");
 						radioContainer.addClass("hide");
 						inputContainer.show();
@@ -328,31 +195,23 @@ function startDapp(web3, isOraclesNetwork) {
 						POPInputSMS.removeClass('hide');
 						POPInputSMS.focus();
 						POPInputWallet.addClass('hide');
-						POPBottomDescriptionContainer.removeClass("hide");
-						step1CopyTable.addClass("hide");
+						step1CopyTable.hide();
 						step3CopyTable.addClass("hide");
 						bottomDescAddition.addClass("hide");
-						copyHashTable.addClass("hide");
 						successContainer.addClass("hide");
 						POPTitleContainerShortend.addClass("POPTitleContainer");
 						POPTitleContainerShortend.removeClass("POPTitleContainerShortend");
 						POPDescContainerShortend.addClass("POPDescContainer");
 						POPDescContainerShortend.removeClass("POPDescContainerShortend");
-						checkboxContainer.addClass("hide");
 					}
 					break;
 				case 3:
 					{
-						stepTitle.text("Success");
+						stepTitle.text(thirdStepTitleText);
 						stepLabel.addClass("hide");
 						POPBottomDescriptionContainer.hide();
-						bottomDescAddition2.html('There is a smart contract deployed to the Oracles network. You can find it here:\
-							<table cellspacing="0" cellpadding="0" class="copyTable nomargin" style="display: table;"><tbody class="copyTableBody"><tr><td class="copyTableCellWalletValue2">' 
-							+ copyTableCellWalletValue1.text() + 
-							'</td><td id="copyWallet3" data-clipboard-text="'+ copyTableCellWalletValue1.text() + '" class="copyTableCellCopyButton"></td></tr></tbody></table>This contract has the following public method signature:\
-							hasPhone (address _addr).<br/>\
-							If the _addr is registered in the contract\'s Phone Registry, the hasPhone method returns true. Otherwise it returns false.');
-
+						bottomDescAddition2.html(bottomMainText);
+						bottomDescAddition2.removeClass("hide");
 						$('.successTableCellWalletValue').text(POPInputWallet.val());
 						var host = "https://" + window.location.hostname;
 						var newUrl = host + "/?wallet=" + POPInputWallet.val().trim();
@@ -361,36 +220,22 @@ function startDapp(web3, isOraclesNetwork) {
 						$('.successTableCellPhoneValue').text(POPInputPhone.val());
 						radioContainer.addClass("hide");
 						inputContainer.hide();
-						POPBottomDescriptionContainer.addClass("hide");
-						step1CopyTable.addClass("hide");
+						step1CopyTable.hide();
 						step3CopyTable.addClass("hide");
 						bottomDescAddition.addClass("hide");
-						bottomDescAddition2.removeClass("hide");
-						copyHashTable.addClass("hide");
 						successContainer.removeClass("hide");
 						POPTitleContainerShortend.addClass("POPTitleContainer");
 						POPTitleContainerShortend.removeClass("POPTitleContainerShortend");
 						POPDescContainerShortend.addClass("POPDescContainer");
 						POPDescContainerShortend.removeClass("POPDescContainerShortend");
-						checkboxContainer.addClass("hide");
 
-						var copyWallet3 = document.getElementById('copyWallet3');
-						var clientCopyWallet3 = new Clipboard( copyWallet3 );
-						clientCopyWallet3.on( "success", function( readyEvent ) {
-						    Materialize.toast('Address copied to buffer', 3000, 'rounded');
-					  	});
+						buildCopyWalletControl("copyWallet3");
 					}
 					break;
 				case 4:
 					{
 						stepTitle.text("Check");
-						bottomDesc.html('Enter a phone number or an Ethereum address to continue. <br/>\
-							There is a smart contract deployed to the Oracles network. You can find it here:\
-							<table cellspacing="0" cellpadding="0" class="copyTable nomargin" style="display: table;"><tbody class="copyTableBody"><tr><td class="copyTableCellWalletValue2">' 
-							+ copyTableCellWalletValue1.text() + 
-							'</td><td id="copyWallet2" data-clipboard-text="'+ copyTableCellWalletValue1.text() + '" class="copyTableCellCopyButton"></td></tr></tbody></table>This contract has the following public method signature:\
-							hasPhone (address _addr).<br/>\
-							If the _addr is registered in the contract\'s Phone Registry, the hasPhone method returns true. Otherwise it returns false.');
+						bottomDesc.html(bottomCheckPageText);
 
 						stepLabel.addClass("hide");
 						phoneRadioCheck();
@@ -401,41 +246,117 @@ function startDapp(web3, isOraclesNetwork) {
 						POPInputPhone.focus();
 						POPInputSMS.addClass('hide');
 						POPInputWallet.addClass('hide');
-						POPBottomDescriptionContainer.removeClass("hide");
-						step1CopyTable.addClass("hide");
+						step1CopyTable.hide();
 						step3CopyTable.addClass("hide");
 						bottomDescAddition.addClass("hide");
 						bottomDescAddition2.addClass("hide");
-						copyHashTable.addClass("hide");
 						successContainer.addClass("hide");
 						POPTitleContainer.addClass("POPTitleContainerShortend");
 						POPTitleContainer.removeClass("POPTitleContainer");
 						POPDescContainer.addClass("POPDescContainerShortend");
 						POPDescContainer.removeClass("POPDescContainer");
 
-						var copyWallet2 = document.getElementById('copyWallet2');
-						var clientCopyWallet2 = new Clipboard(copyWallet2);
-						
-						clientCopyWallet2.on( "success", function( readyEvent ) {
-							Materialize.toast('Address copied to buffer', 3000, 'rounded');
-					  	});
-					  	checkboxContainer.addClass("hide");
+						buildCopyWalletControl("copyWallet2");
 					}
 					break;
 				default:
 					{
-						stepTitle.text("Submit your phone number");
+						stepTitle.text(defaultStepTitleText);
 						stepLabel.removeClass("hide");
-						POPBottomDescriptionContainer.removeClass("hide");
-						step1CopyTable.addClass("hide");
+						POPBottomDescriptionContainer.show();
+						step1CopyTable.hide();
 						step3CopyTable.addClass("hide");
 						bottomDescAddition.addClass("hide");
 						bottomDescAddition2.addClass("hide");
-						copyHashTable.addClass("hide");
 						successContainer.addClass("hide");
 					}
 					break;
 			}
+		}
+
+		function unselectPOPRadios() {
+			POPradios.each(function(e) {
+	  			$(this).find('.POPRadioInner').removeClass('POPradioSelected');
+	  			$(this).find('.POPRadioInner').addClass('POPradioUnselected');
+	  		});
+		}
+
+		function sendCodeBySMSCallback(err, token) {
+			if (err) {
+				middleMainContainerInner.fadeIn(500);
+				loader.addClass('hide');
+				return showAlert(err, err.message);
+			}
+			addToken(web3, config, sender, phoneNumber, token, function(err, txHash) {
+				if (err) {
+					showAlert(err, err.message);
+					middleMainContainerInner.fadeIn(500);
+					loader.addClass('hide');
+					return;
+				}
+				if (txHash) {
+					getTxCallBack(txHash, function() {
+						changeStepNumber(+1, null);
+						middleMainContainerInner.fadeIn(500);
+						loader.addClass('hide');
+						showAlert(null, codeSuccessfullySentBySMSText, "success");
+					});
+				}
+			});
+		}
+
+		function verifyCodeFromSMSCallback(err, txHash) {
+			if (err) {
+				showAlert(null, invalidCodeEnteredText);
+				middleMainContainerInner.fadeIn(500);
+				loader.addClass('hide');
+				return;
+			}
+			if (txHash) {
+				getTxCallBack(txHash, function() {
+					changeStepNumber(+1, null);
+					middleMainContainerInner.fadeIn(500);
+					loader.addClass('hide');
+				});
+			}
+		}
+
+		function getAddressByPhoneCallback(err, addr) {
+			if (err) return showAlert(err, err.message);
+			if (addr != "0x0000000000000000000000000000000000000000" && addr != "0x") {
+				POPInputWallet.val(addr);
+				changeStepNumber(null, 3);
+			} else showAlert(null, phoneIsNotSetText, "warning");
+			middleMainContainerInner.fadeIn(500);
+			loader.addClass('hide');
+		}
+
+		function getPhoneByAddressCallback(err, phone) {
+			if (err) return showAlert(err, err.message);
+			console.log(phone);
+			if (phone != 0) {
+				POPInputPhone.val(phone);
+				changeStepNumber(null, 3);
+			} else showAlert(null, walletIsNotSetText, "warning");
+			middleMainContainerInner.fadeIn(500);
+			loader.addClass('hide');
+		}
+
+		function buildCopyWalletControl(id) {
+			var copyWallet = document.getElementById(id);
+			var clientCopyWallet = new Clipboard(copyWallet);
+			clientCopyWallet.on( "success", function( readyEvent ) {
+				Materialize.toast(addressCopiedToBufferText, 3000, 'rounded');
+		  	});
+		}
+
+		function buildCopyURLControl(id) {
+			var POPShare = document.getElementById(id);
+			var clientShare = new Clipboard( POPShare );
+		  	
+		  	clientShare.on( "success", function( event ) {
+		      Materialize.toast(URLCopiedToBufferText, 3000, 'rounded');
+		    });
 		}
 	});
 }

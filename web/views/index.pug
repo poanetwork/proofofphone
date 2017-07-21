@@ -56,25 +56,11 @@ html
 						input(id="POPInputSMS" placeholder="SMS code", type="number").POPInput.POPInputSMS.hide
 						input(id="POPInputWallet" placeholder="Ethereum wallet").POPInput.POPInputWallet.hide
 						button.POPButton#POPSubmit submit
-					//
-						div.checkboxContainer
-							div.checkboxInnerContainer
-								div.checkboxInnerContainerCell
-									div.POPcheckbox
-										div.POPcheckboxSelected
-								div.checkboxInnerContainerCell
-									span.POPCheckboxDesc I understand that this is a proof-of-concept, my phone number will be permanently stored unencrypted on the Ethereum blockchain and connected to my public key
-							input(type="checkbox", name="privacyPolicyCheckbox", id="privacyPolicyCheckbox", checked).hide
 					div.POPBottomDescriptionContainer
 						div.POPTitleContainer.marginBottom1
 							label.POPTitle2 How does it work?
 						div.POPDescContainer
 							label#bottomDesc.POPDesc Enter a phone number you'd like to join with your Ethereum address. We will send you an SMS. After verification, your address will be joined to your phone.
-							table#copyHashTable(cellspacing="0" cellpadding="0").copyTable.nomargin.hide
-								tbody.copyTableBody
-									tr
-										td#hashVal.copyTableCellWalletValue2
-										td#hashCopy.copyTableCellCopyButton2
 							div.someOuterContainer
 								div.someContainer
 									label#bottomDescAddition.POPDesc.hide
@@ -103,7 +89,6 @@ html
 						div
 							label#bottomDescAddition2.POPDesc.hide
 		div.githubRibbon
-		//img(src="/img/loader.gif").loader.hide
 		div.loader.hide
 			div.loader-i.loader-i_left-top
 			div.loader-i.loader-i_right-top
