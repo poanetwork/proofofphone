@@ -1,4 +1,4 @@
-const contractAddress = "0xf7e9626dbaeb1a6c8b3d02379eb54b81f16e785f"; // Oracles network ProofOfPhone contract address
+const contractAddress = "0x6d57f4a5509f80966ea0abefa71a67526e7bf549"; // Oracles network ProofOfPhone contract address
 const bottomMainText = `There is a smart contract deployed to the Oracles network. You can find it here:
 <table cellspacing="0" cellpadding="0" class="copyTable nomargin" style="display: table;">
 	<tbody class="copyTableBody">
